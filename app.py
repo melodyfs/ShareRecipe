@@ -6,6 +6,7 @@ from bson.objectid import ObjectId
 import bcrypt
 import pdb
 
+
 app = Flask(__name__)
 mongo = MongoClient('localhost', 27017)
 # mongo = MongoClient('mongodb://melodyfs:Melody0116@ds015335.mlab.com:15335/trip_planner_development')

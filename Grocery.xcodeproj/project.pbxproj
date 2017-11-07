@@ -12,6 +12,9 @@
 		6C11B1F61FA8E3C200ADB414 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C11B1F41FA8E3C200ADB414 /* Main.storyboard */; };
 		6C11B1F81FA8E3C200ADB414 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C11B1F71FA8E3C200ADB414 /* Assets.xcassets */; };
 		6C11B1FB1FA8E3C200ADB414 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C11B1F91FA8E3C200ADB414 /* LaunchScreen.storyboard */; };
+		6C3118EF1FB186C3001B7D47 /* WastonNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3118EE1FB186C3001B7D47 /* WastonNetworking.swift */; };
+		6C3118F11FB18B0C001B7D47 /* ImageClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3118F01FB18B0C001B7D47 /* ImageClass.swift */; };
+		6C7EC93B1FB239A20014393E /* RecipeNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7EC93A1FB239A20014393E /* RecipeNetworking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		6C11B1F71FA8E3C200ADB414 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C11B1FA1FA8E3C200ADB414 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C11B1FC1FA8E3C200ADB414 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6C3118EE1FB186C3001B7D47 /* WastonNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WastonNetworking.swift; sourceTree = "<group>"; };
+		6C3118F01FB18B0C001B7D47 /* ImageClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClass.swift; sourceTree = "<group>"; };
+		6C7EC93A1FB239A20014393E /* RecipeNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNetworking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,57 @@
 		6C11B1EF1FA8E3C200ADB414 /* Grocery */ = {
 			isa = PBXGroup;
 			children = (
-				6C11B1F01FA8E3C200ADB414 /* AppDelegate.swift */,
-				6C11B1F21FA8E3C200ADB414 /* ViewController.swift */,
+				6C3118E91FB185FC001B7D47 /* Models */,
+				6C3118EA1FB18607001B7D47 /* VCs */,
+				6C3118EB1FB1861C001B7D47 /* Views */,
+				6C3118EC1FB18626001B7D47 /* Services */,
+				6C3118ED1FB18636001B7D47 /* Supporting */,
 				6C11B1F41FA8E3C200ADB414 /* Main.storyboard */,
-				6C11B1F71FA8E3C200ADB414 /* Assets.xcassets */,
-				6C11B1F91FA8E3C200ADB414 /* LaunchScreen.storyboard */,
-				6C11B1FC1FA8E3C200ADB414 /* Info.plist */,
 			);
 			path = Grocery;
+			sourceTree = "<group>";
+		};
+		6C3118E91FB185FC001B7D47 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6C3118F01FB18B0C001B7D47 /* ImageClass.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6C3118EA1FB18607001B7D47 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				6C11B1F21FA8E3C200ADB414 /* ViewController.swift */,
+			);
+			path = VCs;
+			sourceTree = "<group>";
+		};
+		6C3118EB1FB1861C001B7D47 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6C3118EC1FB18626001B7D47 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6C7EC93A1FB239A20014393E /* RecipeNetworking.swift */,
+				6C3118EE1FB186C3001B7D47 /* WastonNetworking.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6C3118ED1FB18636001B7D47 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				6C11B1FC1FA8E3C200ADB414 /* Info.plist */,
+				6C11B1F91FA8E3C200ADB414 /* LaunchScreen.storyboard */,
+				6C11B1F71FA8E3C200ADB414 /* Assets.xcassets */,
+				6C11B1F01FA8E3C200ADB414 /* AppDelegate.swift */,
+			);
+			path = Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +185,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C3118F11FB18B0C001B7D47 /* ImageClass.swift in Sources */,
 				6C11B1F31FA8E3C200ADB414 /* ViewController.swift in Sources */,
+				6C7EC93B1FB239A20014393E /* RecipeNetworking.swift in Sources */,
 				6C11B1F11FA8E3C200ADB414 /* AppDelegate.swift in Sources */,
+				6C3118EF1FB186C3001B7D47 /* WastonNetworking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +327,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Grocery/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Grocery/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Melody-Yang.Grocery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -289,7 +341,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Grocery/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Grocery/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Melody-Yang.Grocery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
