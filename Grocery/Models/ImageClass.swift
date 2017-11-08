@@ -7,37 +7,40 @@
 //
 
 import Foundation
-import Gloss
+//import Gloss
 
-struct ClassValue: Glossy, Codable {
-    var classValue: String?
+//struct ClassValue: Glossy, Codable {
+//    var classValue: String!
 //    var score: Float?
-//    var custom_classes: Int?
-    
-    init?(json: JSON) {
-//        guard let classValue: String = "class" <~~ json else {
-//            return nil
-//        }
-//        self.custom_classes = "custom_classes" <~~ json
-        self.classValue = "images.classifiers.classes.class" <~~ json
-//        self.score = "classes.score" <~~ json
-    }
-    
-    func toJSON() -> JSON? {
-        return jsonify([
-            "images.classifiers.classes.class" ~~> self.classValue,
-//            "classes.score" ~~> self.score,
-//            "custom_classes" ~~> self.custom_classes
-            ])
-    }
-    
+////    var custom_classes: Int?
+//
+//    init?(json: JSON) {
+////        guard let classValue: String = "class" <~~ json else {
+////            return nil
+////        }
+////        self.custom_classes = "custom_classes" <~~ json
+//        self.classValue = "class" <~~ json
+//        self.score = "score" <~~ json
+//    }
+//
 //    func toJSON() -> JSON? {
 //        return jsonify([
-//            "owner.id" ~~> self.ownerId,
-//            "owner.login" ~~> self.ownerUsername
+//            "class" ~~> self.classValue,
+//            "score" ~~> self.score,
+////            "custom_classes" ~~> self.custom_classes
 //            ])
-}
-
+//    }
+//
+//}
+//
+//struct ImageClass: Codable {
+//    var classValue: String?
+//
+//    init(classValue: String) {
+//        self.classValue = classValue
+//    }
+//
+//}
 
 
 //struct ImageClass: Codable {
@@ -72,8 +75,9 @@ struct ClassValue: Glossy, Codable {
 //        }
 //    }
 //}
-//
 //}
+
+
 //
 //struct List: Codable {
 //    let list: [ImageClass]
@@ -82,16 +86,16 @@ struct ClassValue: Glossy, Codable {
 //
 //extension ImageClass {
 //    init(from service: ImageClassService) {
-//        class_ = []
+////        class_ = []
 //
 //        for classifier in service.images {
 //            for clas in classifier.classifiers{
 //                class_ = clas.class_
 //            }
 //        }
-        
+//         self.init(class_: class_)
 //    }
-//    self.init(class_: class_)
+//
 //}
 
 
@@ -113,13 +117,13 @@ struct ClassValue: Glossy, Codable {
 //        case class_ = "class"
 //    }
 //
-//     init(from decoder: Decoder ) throws {
+//     init(from decoder: Decoder) throws {
 //        let container = try decoder.container(keyedBy: ClassifierKeys.self)
 //        let classContainer = try container.nestedContainer(keyedBy: ClassKeys.self, forKey: .classes)
 //
-//        let class_: String = try classContainer.decode(String.self, forKey: .class_)
+//        let classValue: String = try classContainer.decode(String.self, forKey: .class_)
 //
-//        self.init(class_: class_)
+//        self.init(classValue: classValue)
 //
 //    }
 //

@@ -7,9 +7,7 @@
 //
 
 import Foundation
-//import Gloss
-//
-//struct Recipe
+
 
 struct Recipe: Decodable {
 
@@ -18,51 +16,14 @@ struct Recipe: Decodable {
     var label: String?
     var ingredientLines = [String?]()
 
-//    ingredientLines:[String]
-//    var recipes = [Recipe]()
-
 
     init(image: String, url: String, label: String, ingredientLines: [String]) {
         self.image = image
         self.url = url
         self.label = label
-//        self.recipes = recipes
         self.ingredientLines = ingredientLines
     }
 }
-
-//extension Recipe {
-//
-//    enum Hits: String, CodingKey {
-//        case recipe
-//
-//        enum Recipe: String, CodingKey{
-//            case label
-//        }
-//
-//    }
-//
-//
-//    init(from decoder: Decoder) throws {
-//        var container = try decoder.container(keyedBy: Hits.self)
-//        var recipeContainer = try container.nestedUnkeyedContainer(forKey: .recipe)
-//        print(recipeContainer.count)
-//
-//        while !recipeContainer.isAtEnd {
-//            let container = try recipeContainer.nestedContainer(keyedBy: Hits.Recipe.self)
-//            let label = try container.decode(String.self, forKey: .label)
-////            let destination = try container.decode(String.self, forKey: .destination)
-////            let startDate = try container.decode(String.self, forKey: .start_date)
-////            let endDate = try container.decode(String.self, forKey: .end_date)
-//
-//            // initialize a listing object
-////            let trip = Trip(completion: completion, destination: destination, start_date: startDate, end_date: endDate)
-//            let recipe = Recipe(label: label)
-//            self.recipes.append(recipe)
-//        }
-//    }
-//
-//}
 
 struct RecipeList: Decodable {
     let hits: [Recipe]
@@ -91,8 +52,5 @@ extension Recipe {
 
         self.init(image: image, url: url, label: label, ingredientLines: ingredientLines)
     }
-
-
 }
-//
-//
+
