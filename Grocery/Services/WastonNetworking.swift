@@ -22,11 +22,11 @@ class WatsonNetworking {
                          "version": "2016-05-20",
                          "image_files": ".jpg",
                          "Accept-Language": "en",
-                         "url": "\(String(describing: imageURL))"]
+                         "url": "\(imageURL)"]
         
         var url = URL(string: baseURL)!
-        var request = URLRequest(url: url)
         url = url.appendingQueryParameters(urlParams)
+        var request = URLRequest(url: url)
         request.allHTTPHeaderFields = headers
         request.httpMethod = "GET"
 
