@@ -16,9 +16,6 @@ class WatsonNetworking {
     let baseURL = "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify"
     
     func analyzeImage(imageURL: String, completion: @escaping (Data) -> Void) {
-        var url = URL(string: baseURL)!
-        var request = URLRequest(url: url)
-        
         let headers = ["Content-Type": "application/json",
                        "Accept": "application/json"]
         let urlParams = ["api_key": "a33be142c28212ecf61c5fd19f05a76a08e845d7",
@@ -27,14 +24,19 @@ class WatsonNetworking {
                          "Accept-Language": "en",
                          "url": "\(String(describing: imageURL))"]
         
+        var url = URL(string: baseURL)!
+        var request = URLRequest(url: url)
         url = url.appendingQueryParameters(urlParams)
         request.allHTTPHeaderFields = headers
         request.httpMethod = "GET"
 
         
         session.dataTask(with: request) { (data, res, err) in
+             let httpResponse = res as? HTTPURLResponse
             if let data = data {
                 completion(data)
+                let statusCode = httpResponse?.statusCode
+                print(statusCode)
             } else {
                 print(err?.localizedDescription ?? "Error")
             }
