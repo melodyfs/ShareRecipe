@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E97F58C8BF6F4FF2C1C7256 /* Pods_Grocery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5403BC941B683735328BA79 /* Pods_Grocery.framework */; };
 		6C11B1F11FA8E3C200ADB414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11B1F01FA8E3C200ADB414 /* AppDelegate.swift */; };
 		6C11B1F31FA8E3C200ADB414 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11B1F21FA8E3C200ADB414 /* ViewController.swift */; };
 		6C11B1F61FA8E3C200ADB414 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C11B1F41FA8E3C200ADB414 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 		6C3118EF1FB186C3001B7D47 /* WastonNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3118EE1FB186C3001B7D47 /* WastonNetworking.swift */; };
 		6C3118F11FB18B0C001B7D47 /* ImageClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3118F01FB18B0C001B7D47 /* ImageClass.swift */; };
 		6C7EC93B1FB239A20014393E /* RecipeNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7EC93A1FB239A20014393E /* RecipeNetworking.swift */; };
+		6C7EC93D1FB2424B0014393E /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7EC93C1FB2424B0014393E /* Recipe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,10 @@
 		6C3118EE1FB186C3001B7D47 /* WastonNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WastonNetworking.swift; sourceTree = "<group>"; };
 		6C3118F01FB18B0C001B7D47 /* ImageClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClass.swift; sourceTree = "<group>"; };
 		6C7EC93A1FB239A20014393E /* RecipeNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNetworking.swift; sourceTree = "<group>"; };
+		6C7EC93C1FB2424B0014393E /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		A5403BC941B683735328BA79 /* Pods_Grocery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grocery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3BE1E9EFA1E45FEEE95B557 /* Pods-Grocery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Grocery/Pods-Grocery.release.xcconfig"; sourceTree = "<group>"; };
+		C01729D2B147BD537DF98F32 /* Pods-Grocery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Grocery/Pods-Grocery.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E97F58C8BF6F4FF2C1C7256 /* Pods_Grocery.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +53,8 @@
 			children = (
 				6C11B1EF1FA8E3C200ADB414 /* Grocery */,
 				6C11B1EE1FA8E3C200ADB414 /* Products */,
+				F64E06F0334E5C5EB1186EDE /* Pods */,
+				6D97331AF6D65645CDCC6BE7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				6C3118F01FB18B0C001B7D47 /* ImageClass.swift */,
+				6C7EC93C1FB2424B0014393E /* Recipe.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -113,6 +123,23 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
+		6D97331AF6D65645CDCC6BE7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5403BC941B683735328BA79 /* Pods_Grocery.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F64E06F0334E5C5EB1186EDE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C01729D2B147BD537DF98F32 /* Pods-Grocery.debug.xcconfig */,
+				B3BE1E9EFA1E45FEEE95B557 /* Pods-Grocery.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -120,9 +147,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6C11B1FF1FA8E3C200ADB414 /* Build configuration list for PBXNativeTarget "Grocery" */;
 			buildPhases = (
+				F78FCEB91CF6EA1013B80132 /* [CP] Check Pods Manifest.lock */,
 				6C11B1E91FA8E3C200ADB414 /* Sources */,
 				6C11B1EA1FA8E3C200ADB414 /* Frameworks */,
 				6C11B1EB1FA8E3C200ADB414 /* Resources */,
+				0D7ED5B0AAD166FF5C352C2B /* [CP] Embed Pods Frameworks */,
+				3FA214480BB51215D856B192 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -180,6 +210,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0D7ED5B0AAD166FF5C352C2B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grocery/Pods-Grocery-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3FA214480BB51215D856B192 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grocery/Pods-Grocery-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F78FCEB91CF6EA1013B80132 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6C11B1E91FA8E3C200ADB414 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -188,6 +266,7 @@
 				6C3118F11FB18B0C001B7D47 /* ImageClass.swift in Sources */,
 				6C11B1F31FA8E3C200ADB414 /* ViewController.swift in Sources */,
 				6C7EC93B1FB239A20014393E /* RecipeNetworking.swift in Sources */,
+				6C7EC93D1FB2424B0014393E /* Recipe.swift in Sources */,
 				6C11B1F11FA8E3C200ADB414 /* AppDelegate.swift in Sources */,
 				6C3118EF1FB186C3001B7D47 /* WastonNetworking.swift in Sources */,
 			);
@@ -324,6 +403,7 @@
 		};
 		6C11B2001FA8E3C200ADB414 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C01729D2B147BD537DF98F32 /* Pods-Grocery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -338,6 +418,7 @@
 		};
 		6C11B2011FA8E3C200ADB414 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3BE1E9EFA1E45FEEE95B557 /* Pods-Grocery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
