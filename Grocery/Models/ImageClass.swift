@@ -7,31 +7,59 @@
 //
 
 import Foundation
-//import Gloss
+import Gloss
 
-//struct ClassValue: Glossy, Codable {
-//    var classValue: String!
-//    var score: Float?
-////    var custom_classes: Int?
+//struct Classes: Codable {
+//    var classes:[JSON]
 //
-//    init?(json: JSON) {
-////        guard let classValue: String = "class" <~~ json else {
-////            return nil
-////        }
-////        self.custom_classes = "custom_classes" <~~ json
-//        self.classValue = "class" <~~ json
-//        self.score = "score" <~~ json
-//    }
-//
-//    func toJSON() -> JSON? {
-//        return jsonify([
-//            "class" ~~> self.classValue,
-//            "score" ~~> self.score,
-////            "custom_classes" ~~> self.custom_classes
-//            ])
-//    }
-//
+////    init(classValue: String) {
+////        self.classValue = classValue
+////    }
 //}
+
+struct Classes: Glossy, Codable {
+    var classValue: String?
+//    var imageClassValue: String?
+    var score: Float?
+//    var custom_classes: Int?
+
+    init?(json: JSON) {
+//        guard let classValue: String = "class" <~~ json else {
+//            return nil
+//        }
+//        self.custom_classes = "custom_classes" <~~ json
+        guard let classValue: String = "class" <~~ json else {return}
+//            let classValue = [ClassValue].from(jsonArray: classes) {
+//            self.classes = classValue
+//        }
+
+//        self.classValue = "class" <~~ json
+//        self.score = "classes.score" <~~ json
+        self.classValue = classValue
+    }
+
+    func toJSON() -> JSON? {
+        return jsonify([
+            "classes.class" ~~> self.classValue,
+            "classes.score" ~~> self.score,
+//            "custom_classes" ~~> self.custom_classes
+            ])
+    }
+
+}
+
+struct ImageClass: Codable {
+    let classes: Classes
+    
+    init?(json: JSON) {
+        guard let dataJSON = json["classes"] as? JSON, let classes: Classes = "class" <~~ dataJSON
+            else {
+                return nil
+        }
+        
+        self.classes = classes
+    }
+}
 //
 //struct ImageClass: Codable {
 //    var classValue: String?

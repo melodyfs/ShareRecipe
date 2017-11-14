@@ -111,9 +111,21 @@ class User(Resource):
             return myUser
 
 
+class Recipe(Resource):
+
+    def post(self):
+        new_recipe = request.json
+        name = new_recipe.get('recipeName')
+        recipe_col = app.db.recipes
+
+        result = recipe_col.insert(new_recipe)
+    def get(self):
+        recipe = 
+
+
 ##api routes
 api.add_resource(User,'/users')
-# api.add_resource(Trip,'/user/trips/')
+api.add_resource(Recipe,'/recipes')
 
 #  Custom JSON serializer for flask_restful
 @api.representation('application/json')
