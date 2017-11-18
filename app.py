@@ -115,13 +115,107 @@ class Recipe(Resource):
 
     def post(self):
         new_recipe = request.json
+        email = request.args.get('email')
         name = new_recipe.get('recipeName')
+        ingredientLines = new_recipe.get('ingredientLines')
+        url = new_recipe.get('url')
+        imageURL = new_recipe.get('imageURL')
         recipe_col = app.db.recipes
 
-        result = recipe_col.insert(new_recipe)
-    def get(self):
-        recipe = 
+        check_recipe = recipe_col.find({'email': email,'recipes.recipeName': {'$exists':True}})
 
+        if check_recipe:
+            result = recipe_col.update_one(
+                {"email": email},
+                {'$addToSet':
+                    {'recipes': {
+                        "recipeName": name,
+    	                "ingredientLines": ingredientLines,
+    	                 "url": url,
+    	                 "imageURL": imageURL
+                         }
+                    }
+                }
+
+            )
+            return (result, 200, None)
+
+        result = recipe_col.insert(
+            {  "email": email,
+                "recipes": [
+	             {
+                    "recipeName": name,
+	                "ingredientLines": ingredientLines,
+	                 "url": url,
+	                 "imageURL": imageURL
+	           }]
+            })
+        return (result, 201, None)
+
+    def get(self):
+        email = request.args.get('email')
+        name = request.args.get('recipeName')
+        recipe_col = app.db.recipes
+
+        target = recipe_col.find_one({'email': email,'recipes.recipeName': name})
+
+        return (target, 200, None)
+
+    def patch(self):
+        new_recipe = request.json
+        email = request.args.get('email')
+        name = request.args.get('recipeName')
+        recipe_col = app.db.recipes
+
+        new_name = new_recipe.get('recipeName')
+        new_ingredient = new_recipe.get('ingredientLines')
+        new_url = new_recipe.get('url')
+        new_image = new_recipe.get('imageURL')
+
+        target = recipe_col.find_one({'email': email,'recipes.recipeName': name})
+        # recipe = target['recipes']
+
+        if new_name:
+            result = recipe_col.update(
+                {'email': email,'recipes.recipeName': name},
+                {'$set': {'recipes.$.recipeName': new_name}}
+                )
+            return (result, 200, None)
+        if new_ingredient:
+            result = recipe_col.update(
+                {'email': email,'recipes.recipeName': name},
+                {'$set': {'recipes.$.ingredientLines': new_ingredient}}
+                )
+            return (result, 200, None)
+        if new_url:
+            result = recipe_col.update(
+                {'email': email,'recipes.recipeName': name},
+                {'$set': {'recipes.$.url': new_url}}
+                )
+            return (result, 200, None)
+        if new_image:
+            result = recipe_col.update(
+                {'email': email,'recipes.recipeName': name},
+                {'$set': {'recipes.$.imageURL': new_image}}
+                )
+            return (result, 200, None)
+
+        else:
+            return ({"error": "Can't modify the recipe"}, 404, None)
+
+
+    def delete(self):
+        recipe_col = app.db.recipes
+        recipe = request.args.get('recipeName')
+        email = request.args.get('email')
+
+        target = recipe_col.update({'email': email,'recipes.recipeName': recipe},
+                                    {'$pull': {
+                                        'recipes':{
+                                        'recipeName': recipe}}
+                                     })
+
+        return (target, 200, None)
 
 ##api routes
 api.add_resource(User,'/users')

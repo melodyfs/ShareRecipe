@@ -19,12 +19,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        Networking.shared.fetch(route: .analyzeImage, data: nil) { image in
-//            let imageClasses = try? JSONDecoder().decode(Classes.self, from: image)
-////            guard let recipe = imageClasses?.list else {return}
-//            print(imageClasses)
-//
-//        }
+        Networking.shared.fetch(route: .analyzeImage, data: nil) { image in
+            let imageClasses = try? JSONDecoder().decode(Images.self, from: image)
+//            guard let recipe = imageClasses?.list else {return}
+            print(imageClasses)
+
+        }
         
 //        WatsonNetworking.shared.analyzeImage(imageURL: "https://www.edamam.com/web-img/58a/58a93a8d0c48110ac1c59e3b6e82a9ef.jpg") { data in
 //            print(data)
@@ -40,10 +40,10 @@ class ViewController: UIViewController {
 //
 //        }
         
-        Networking.shared.fetch(route: .getRecipe, data: nil) { data in
-             let recipe = try? JSONDecoder().decode(RecipeList.self, from: data)
-            print(recipe)
-        }
+//        Networking.shared.fetch(route: .getRecipe, data: nil) { data in
+//             let recipe = try? JSONDecoder().decode(RecipeList.self, from: data)
+//            print(recipe)
+//        }
         
     }
 
@@ -54,4 +54,6 @@ class ViewController: UIViewController {
 
 
 }
+
+
 

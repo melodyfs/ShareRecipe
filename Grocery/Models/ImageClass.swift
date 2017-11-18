@@ -9,57 +9,82 @@
 import Foundation
 import Gloss
 
-//struct Classes: Codable {
-//    var classes:[JSON]
-//
-////    init(classValue: String) {
-////        self.classValue = classValue
-////    }
-//}
 
 struct Classes: Glossy, Codable {
-    var classValue: String?
-//    var imageClassValue: String?
-    var score: Float?
+//    var classValue: String?
 //    var custom_classes: Int?
+    var score: Float?
 
     init?(json: JSON) {
-//        guard let classValue: String = "class" <~~ json else {
-//            return nil
-//        }
 //        self.custom_classes = "custom_classes" <~~ json
-        guard let classValue: String = "class" <~~ json else {return}
-//            let classValue = [ClassValue].from(jsonArray: classes) {
-//            self.classes = classValue
-//        }
-
-//        self.classValue = "class" <~~ json
-//        self.score = "classes.score" <~~ json
-        self.classValue = classValue
+        
+//        guard let classValue: String = "custom_classes" <~~ json else {return}
+        
+//        self.classValue = "custom_classes" <~~ json
+        self.score = "score" <~~ json
     }
 
     func toJSON() -> JSON? {
         return jsonify([
-            "classes.class" ~~> self.classValue,
-            "classes.score" ~~> self.score,
-//            "custom_classes" ~~> self.custom_classes
             ])
     }
 
 }
 
-struct ImageClass: Codable {
-    let classes: Classes
+
+struct ClassValue : Glossy, Codable {
+    var classValue: [Classes]
     
     init?(json: JSON) {
-        guard let dataJSON = json["classes"] as? JSON, let classes: Classes = "class" <~~ dataJSON
-            else {
-                return nil
-        }
-        
-        self.classes = classes
+        guard let classValue: [Classes] = "classes" <~~ json
+            else { print("Error decoding classes Array");  return nil }
+        self.classValue = classValue
+    }
+    
+    func toJSON() -> JSON? {
+        return jsonify([
+            
+            ])
     }
 }
+
+struct Classifiers: Glossy, Codable {
+    var classifier: [ClassValue]
+    
+    init?(json: JSON) {
+        guard let classifier: [ClassValue] = "classifiers" <~~ json
+            else { print("Error decoding classifier Array"); return nil }
+        self.classifier = classifier
+    }
+    
+    func toJSON() -> JSON? {
+        return jsonify([
+       
+            ])
+    }
+    
+}
+
+struct Images: Glossy, Codable {
+    
+    let images: [Classifiers]
+    
+    init?(json: JSON) {
+        guard let images: [Classifiers] = "images" <~~ json
+            else { print("Error decoding Images Array"); return nil}
+   
+        
+        self.images = images
+    }
+    
+    func toJSON() -> JSON? {
+        return jsonify([
+            
+            ])
+    }
+}
+
+
 //
 //struct ImageClass: Codable {
 //    var classValue: String?
