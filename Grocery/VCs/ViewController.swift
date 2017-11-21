@@ -16,14 +16,19 @@ class ViewController: UIViewController {
 //    var imageClass = [ImageClass]()
     let baseURL = "https://api.edamam.com/search"
 
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
-        WatsonNetworking.shared.analyzeImage(imageURL: "https://www.edamam.com/web-img/58a/58a93a8d0c48110ac1c59e3b6e82a9ef.jpg") { data in
-            print(data)
-            let imageClasses = try? JSONDecoder().decode(List.self, from: data)
-            guard let recipe = imageClasses?.list else {return}
-            print(recipe)
+//        WatsonNetworking.shared.analyzeImage(imageURL: "https://www.edamam.com/web-img/58a/58a93a8d0c48110ac1c59e3b6e82a9ef.jpg") { data in
+//            print(data)
+//            let imageClasses = try? JSONDecoder().decode(List.self, from: data)
+//            guard let recipe = imageClasses?.list else {return}
+//            print(recipe)
 //            let classifiers = imageClasses?.classifier
 //            let classes = classifiers.classe
                 //            self.imageClass = imageClasses
@@ -31,7 +36,7 @@ class ViewController: UIViewController {
 //            guard let imageClasses = [imageClasses].from(data: data) else {return}
 //            print(imageClasses)
 
-        }
+//        }
         
 //        RecipeNetworking.sharedInstance.getRecipe() { (data) in
 //            print(data)
