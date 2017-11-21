@@ -14,36 +14,21 @@ class ViewController: UIViewController {
     
     var recipes = [Recipe]()
 //    var imageClass = [ImageClass]()
-    let baseURL = "https://api.edamam.com/search"
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Networking.shared.fetch(route: .analyzeImage, data: nil) { image in
-            let imageClasses = try? JSONDecoder().decode(Images.self, from: image)
-//            guard let recipe = imageClasses?.list else {return}
-            print(imageClasses)
-
-        }
-        
-//        WatsonNetworking.shared.analyzeImage(imageURL: "https://www.edamam.com/web-img/58a/58a93a8d0c48110ac1c59e3b6e82a9ef.jpg") { data in
-//            print(data)
-//            let imageClasses = try? JSONDecoder().decode(Classes.self, from: data)
-//            guard let recipe = imageClasses?.list else {return}
-//            print(recipe)
-//            let classifiers = imageClasses?.classifier
-//            let classes = classifiers.classe
-                //            self.imageClass = imageClasses
-//            print(imageClasses)
-//            guard let imageClasses = [imageClasses].from(data: data) else {return}
+//        Networking.shared.fetch(route: .analyzeImage, data: nil) { image in
+//            let imageClasses = try? JSONDecoder().decode(ImageClass.self, from: image)
 //            print(imageClasses)
 //
 //        }
         
-//        Networking.shared.fetch(route: .getRecipe, data: nil) { data in
-//             let recipe = try? JSONDecoder().decode(RecipeList.self, from: data)
-//            print(recipe)
-//        }
+        Networking.shared.fetch(route: .getRecipe, data: nil) { data in
+             let recipe = try? JSONDecoder().decode(RecipeList.self, from: data)
+            print(recipe)
+        }
         
     }
 
