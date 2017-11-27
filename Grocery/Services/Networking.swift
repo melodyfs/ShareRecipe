@@ -9,16 +9,6 @@
 import Foundation
 import KeychainSwift
 
-struct BasicAuth {
-    static func generateBasicAuthHeader(username: String, password: String) -> String {
-        let loginString = String(format: "%@:%@", username, password)
-        let loginData: Data = loginString.data(using: String.Encoding.utf8)!
-        let base64LoginString = loginData.base64EncodedString(options: .init(rawValue: 0))
-        let authHeaderString = "Basic \(base64LoginString)"
-        
-        return authHeaderString
-    }
-}
 
 let keychain = KeychainSwift()
 
@@ -32,14 +22,14 @@ enum Route {
     
     func path() -> String {
         switch self {
-//        case .createUser, .getUser:
-//            return "user/"
+        case .createUser, .getUser:
+            return "http://127.0.0.1:5000/users"
+        case .saveRecipe, .deleteRecipe:
+            return "http://127.0.0.1:5000/recipes"
         case .getRecipe:
             return "https://api.edamam.com/search"
         case .analyzeImage:
             return "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify"
-        default:
-            return "http://127.0.0.1:5000/"
         }
     }
     
@@ -101,13 +91,12 @@ enum Route {
     
     func method() -> String {
         switch self {
-        case .createUser:
+        case .createUser, .saveRecipe:
             return "POST"
         default:
             return "GET"
         }
     }
-    
     
     
 }

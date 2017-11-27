@@ -7,17 +7,19 @@
 //
 
 import UIKit
-import Gloss
+//import UPCarouselFlowLayout
 
 
 class ViewController: UIViewController {
     
-    var recipes = [Recipe]()
+//    var recipes = [Recipe]()
 //    var imageClass = [ImageClass]()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
         
 //        Networking.shared.fetch(route: .analyzeImage, data: nil) { image in
 //            let imageClasses = try? JSONDecoder().decode(ImageClass.self, from: image)
@@ -25,10 +27,10 @@ class ViewController: UIViewController {
 //
 //        }
         
-        Networking.shared.fetch(route: .getRecipe, data: nil) { data in
-             let recipe = try? JSONDecoder().decode(RecipeList.self, from: data)
-            print(recipe)
-        }
+//        Networking.shared.fetch(route: .getRecipe, data: nil) { data in
+//             let recipe = try? JSONDecoder().decode(RecipeList.self, from: data)
+//            print(recipe)
+//        }
         
     }
 
