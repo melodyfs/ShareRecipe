@@ -158,7 +158,7 @@
         <!--Main Tab Bar Controller-->
         <scene sceneID="Csa-2G-h7S">
             <objects>
-                <tabBarController id="7G2-TI-ZPE" customClass="MainTabBarController" sceneMemberID="viewController">
+                <tabBarController id="7G2-TI-ZPE" customClass="MainTabBarController" customModule="Grocery" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OQn-qc-QUU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
