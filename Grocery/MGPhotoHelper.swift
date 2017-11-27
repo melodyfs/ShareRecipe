@@ -26,8 +26,8 @@ class MGPhotoHelper: NSObject {
         // 2
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             // 3
-            let capturePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { action in
-                // do nothing yet...
+            let capturePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { [unowned self] action in
+                self.presentImagePickerController(with: .camera, from: viewController)
             })
             
             // 4
@@ -36,8 +36,8 @@ class MGPhotoHelper: NSObject {
         
         // 5
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let uploadAction = UIAlertAction(title: "Upload from Library", style: .default, handler: { action in
-                // do nothing yet...
+            let uploadAction = UIAlertAction(title: "Upload from Library", style: .default, handler: { [unowned self] action in
+                self.presentImagePickerController(with: .photoLibrary, from: viewController)
             })
             
             alertController.addAction(uploadAction)
@@ -50,4 +50,17 @@ class MGPhotoHelper: NSObject {
         // 7
         viewController.present(alertController, animated: true)
     }
+    
+    func presentImagePickerController(with sourceType: UIImagePickerControllerSourceType, from viewController: UIViewController) {
+    //  Creates instance of UIImagePickerController
+    //  UIImagePickerController has a component that will allow users to take or upload an image
+        let imagePickerController = UIImagePickerController()
+        
+    //  Sets the source type to determine whether to display the user's library or camera.
+    //  Set by the arguments that are given.
+        imagePickerController.sourceType = sourceType
+        
+        viewController.present(imagePickerController, animated: true)
+    }
+    
 }
