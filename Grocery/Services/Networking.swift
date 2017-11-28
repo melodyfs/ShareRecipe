@@ -57,7 +57,6 @@ enum Route {
         case .createUser:
             return [:]
         case .getRecipe:
-            //TODO: dynamic query
             return ["q": "vanilla"]
         case .analyzeImage:
             let urlParams = ["api_key": "a33be142c28212ecf61c5fd19f05a76a08e845d7",
@@ -93,12 +92,12 @@ enum Route {
         switch self {
         case .createUser, .saveRecipe:
             return "POST"
+        case .deleteRecipe:
+            return "DELETE"
         default:
             return "GET"
         }
     }
-    
-    
 }
 
 
@@ -109,10 +108,14 @@ class Networking {
     
     let session = URLSession.shared
     
-    func fetch(route: Route, data: Encodable?, completion: @escaping (Data) -> Void) {
+    func fetch(route: Route, data: Encodable?, params: [String:String]?, completion: @escaping (Data) -> Void) {
         let base = route.path()
         var url = URL(string: base)!
-        url = url.appendingQueryParameters(route.urlParams())
+        
+        if (params?.isEmpty)! {
+            url = url.appendingQueryParameters(route.urlParams())
+        }
+        url = url.appendingQueryParameters(params!)
         
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = route.headers()

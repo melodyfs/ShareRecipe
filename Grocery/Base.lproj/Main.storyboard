@@ -79,9 +79,10 @@
                         <viewLayoutGuide key="safeArea" id="jFz-pP-8ic"/>
                     </view>
                     <navigationItem key="navigationItem" id="ghF-FD-8ud">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="7BP-dH-oaZ">
+                        <barButtonItem key="rightBarButtonItem" title="See Recipe" id="7BP-dH-oaZ">
                             <connections>
-                                <segue destination="i3U-NQ-R7J" kind="show" id="nql-gy-86w"/>
+                                <action selector="seeRecipeTapped:" destination="rxx-4C-cE5" id="vE1-Hf-wTq"/>
+                                <segue destination="i3U-NQ-R7J" kind="show" id="TXC-2t-mgv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -96,7 +97,7 @@
         <!--RecipeVC-->
         <scene sceneID="i9h-Uv-jEJ">
             <objects>
-                <viewController id="i3U-NQ-R7J" customClass="RecipeVC" customModule="Grocery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="recipeVC" id="i3U-NQ-R7J" customClass="RecipeVC" customModule="Grocery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d9y-LO-SjX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,32 +106,58 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uhS-aQ-BVf" customClass="UPCarouselFlowLayout" customModule="UPCarouselFlowLayout">
-                                    <size key="itemSize" width="300" height="300"/>
+                                    <size key="itemSize" width="300" height="430"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="sideItemScale">
-                                            <real key="value" value="0.59999999999999998"/>
+                                            <real key="value" value="0.80000000000000004"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="sideItemAlpha">
                                             <real key="value" value="0.40000000000000002"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="sideItemShift">
-                                            <real key="value" value="2"/>
+                                            <real key="value" value="0.0"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recipeCell" id="MEM-Je-EXj" customClass="RecipeCell" customModule="Grocery" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="127" width="300" height="300"/>
+                                        <rect key="frame" x="0.0" y="94" width="300" height="366"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="366"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tax-5u-OP8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="277"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5d2-1R-nlH">
+                                                    <rect key="frame" x="0.0" y="328" width="300" height="38"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="View"/>
+                                                    <connections>
+                                                        <action selector="viewTapped:" destination="MEM-Je-EXj" eventType="touchUpInside" id="8jK-Bb-ieL"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RecipeName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SN0-3T-UU0">
+                                                    <rect key="frame" x="0.0" y="292" width="300" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.58458426340000003" green="0.8621925332" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <size key="customSize" width="300" height="300"/>
+                                        <color key="backgroundColor" red="0.98679953809999998" green="0.65468043090000005" blue="0.77666962149999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="customSize" width="300" height="366"/>
+                                        <connections>
+                                            <outlet property="recipeImageView" destination="tax-5u-OP8" id="Pxx-wc-vkz"/>
+                                            <outlet property="recipeNameLabel" destination="SN0-3T-UU0" id="8jQ-T7-lDN"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -208,7 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ZA-Tu-4ao" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2857" y="385"/>
+            <point key="canvasLocation" x="3359" y="362"/>
         </scene>
         <!--User-->
         <scene sceneID="5PW-UY-mNq">
