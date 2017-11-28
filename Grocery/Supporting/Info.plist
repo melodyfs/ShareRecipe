@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Uses the camera to take pictures</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Uses your library to upload pictures</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Shrikhand-Regular.ttf</string>
+	</array>
+	<key>CFBundleGetInfoString</key>
+	<array>
+		<string></string>
+	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleBlackTranslucent</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

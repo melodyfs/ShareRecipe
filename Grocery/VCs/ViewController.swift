@@ -16,15 +16,15 @@ class ViewController: UIViewController {
 //    var imageClass = [ImageClass]()
 
 
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
-       
-        
-//        Networking.shared.fetch(route: .analyzeImage, data: nil) { image in
-//            let imageClasses = try? JSONDecoder().decode(ImageClass.self, from: image)
-//            print(imageClasses)
-//
+
 //        }
         
 //        Networking.shared.fetch(route: .getRecipe, data: nil) { data in
