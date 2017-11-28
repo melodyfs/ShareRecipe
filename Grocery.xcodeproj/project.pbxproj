@@ -13,12 +13,21 @@
 		6C11B1F61FA8E3C200ADB414 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C11B1F41FA8E3C200ADB414 /* Main.storyboard */; };
 		6C11B1F81FA8E3C200ADB414 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C11B1F71FA8E3C200ADB414 /* Assets.xcassets */; };
 		6C11B1FB1FA8E3C200ADB414 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C11B1F91FA8E3C200ADB414 /* LaunchScreen.storyboard */; };
-		6C3118EF1FB186C3001B7D47 /* WastonNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3118EE1FB186C3001B7D47 /* WastonNetworking.swift */; };
 		6C3118F11FB18B0C001B7D47 /* ImageClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3118F01FB18B0C001B7D47 /* ImageClass.swift */; };
-		6C7EC93B1FB239A20014393E /* RecipeNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7EC93A1FB239A20014393E /* RecipeNetworking.swift */; };
+		6C7EC81F1FC3CF49007A6312 /* BasicAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7EC81E1FC3CF49007A6312 /* BasicAuth.swift */; };
+		6C7EC8271FC3DAC6007A6312 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7EC8261FC3DAC6007A6312 /* UIImage+Extension.swift */; };
 		6C7EC93D1FB2424B0014393E /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7EC93C1FB2424B0014393E /* Recipe.swift */; };
+
 		994288611FCC145900CE09CB /* MGPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994288601FCC145900CE09CB /* MGPhotoHelper.swift */; };
 		99F189821FC32817008FF32F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F189811FC32817008FF32F /* MainTabBarController.swift */; };
+
+		6CC777051FB622C40030C0FF /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC777041FB622C30030C0FF /* Networking.swift */; };
+		6CE0A71E1FC4F38C008BB306 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0A71D1FC4F38C008BB306 /* TabBarVC.swift */; };
+		6CE0A7201FC4FD5C008BB306 /* IngredientVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0A71F1FC4FD5C008BB306 /* IngredientVC.swift */; };
+		6CE0A7221FC4FD72008BB306 /* RecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0A7211FC4FD72008BB306 /* RecipeVC.swift */; };
+		6CE0A7241FC4FE47008BB306 /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0A7231FC4FE47008BB306 /* IngredientCell.swift */; };
+		6CE0A7261FCCBDF8008BB306 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0A7251FCCBDF8008BB306 /* RecipeCell.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,12 +38,21 @@
 		6C11B1F71FA8E3C200ADB414 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C11B1FA1FA8E3C200ADB414 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C11B1FC1FA8E3C200ADB414 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6C3118EE1FB186C3001B7D47 /* WastonNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WastonNetworking.swift; sourceTree = "<group>"; };
 		6C3118F01FB18B0C001B7D47 /* ImageClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClass.swift; sourceTree = "<group>"; };
-		6C7EC93A1FB239A20014393E /* RecipeNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNetworking.swift; sourceTree = "<group>"; };
+		6C7EC81E1FC3CF49007A6312 /* BasicAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAuth.swift; sourceTree = "<group>"; };
+		6C7EC8261FC3DAC6007A6312 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Extension.swift"; path = "Extensions/UIImage+Extension.swift"; sourceTree = "<group>"; };
 		6C7EC93C1FB2424B0014393E /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+
 		994288601FCC145900CE09CB /* MGPhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGPhotoHelper.swift; sourceTree = "<group>"; };
 		99F189811FC32817008FF32F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+
+		6CC777041FB622C30030C0FF /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		6CE0A71D1FC4F38C008BB306 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		6CE0A71F1FC4FD5C008BB306 /* IngredientVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientVC.swift; sourceTree = "<group>"; };
+		6CE0A7211FC4FD72008BB306 /* RecipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeVC.swift; sourceTree = "<group>"; };
+		6CE0A7231FC4FE47008BB306 /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
+		6CE0A7251FCCBDF8008BB306 /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
+
 		A5403BC941B683735328BA79 /* Pods_Grocery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grocery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3BE1E9EFA1E45FEEE95B557 /* Pods-Grocery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Grocery/Pods-Grocery.release.xcconfig"; sourceTree = "<group>"; };
 		C01729D2B147BD537DF98F32 /* Pods-Grocery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Grocery/Pods-Grocery.debug.xcconfig"; sourceTree = "<group>"; };
@@ -73,6 +91,7 @@
 		6C11B1EF1FA8E3C200ADB414 /* Grocery */ = {
 			isa = PBXGroup;
 			children = (
+				6C7EC8251FC3DAB0007A6312 /* Extensions */,
 				6C3118E91FB185FC001B7D47 /* Models */,
 				6C3118EA1FB18607001B7D47 /* VCs */,
 				6C3118EB1FB1861C001B7D47 /* Views */,
@@ -97,7 +116,13 @@
 			isa = PBXGroup;
 			children = (
 				6C11B1F21FA8E3C200ADB414 /* ViewController.swift */,
+
 				99F189811FC32817008FF32F /* MainTabBarController.swift */,
+
+				6CE0A71D1FC4F38C008BB306 /* TabBarVC.swift */,
+				6CE0A71F1FC4FD5C008BB306 /* IngredientVC.swift */,
+				6CE0A7211FC4FD72008BB306 /* RecipeVC.swift */,
+
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -105,6 +130,8 @@
 		6C3118EB1FB1861C001B7D47 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6CE0A7231FC4FE47008BB306 /* IngredientCell.swift */,
+				6CE0A7251FCCBDF8008BB306 /* RecipeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -112,8 +139,8 @@
 		6C3118EC1FB18626001B7D47 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				6C7EC93A1FB239A20014393E /* RecipeNetworking.swift */,
-				6C3118EE1FB186C3001B7D47 /* WastonNetworking.swift */,
+				6CC777041FB622C30030C0FF /* Networking.swift */,
+				6C7EC81E1FC3CF49007A6312 /* BasicAuth.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -127,6 +154,14 @@
 				6C11B1F01FA8E3C200ADB414 /* AppDelegate.swift */,
 			);
 			path = Supporting;
+			sourceTree = "<group>";
+		};
+		6C7EC8251FC3DAB0007A6312 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6C7EC8261FC3DAC6007A6312 /* UIImage+Extension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		6D97331AF6D65645CDCC6BE7 /* Frameworks */ = {
@@ -276,13 +311,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C3118F11FB18B0C001B7D47 /* ImageClass.swift in Sources */,
+				6C7EC8271FC3DAC6007A6312 /* UIImage+Extension.swift in Sources */,
+				6CE0A7221FC4FD72008BB306 /* RecipeVC.swift in Sources */,
+				6CE0A7261FCCBDF8008BB306 /* RecipeCell.swift in Sources */,
 				6C11B1F31FA8E3C200ADB414 /* ViewController.swift in Sources */,
+
 				6C7EC93B1FB239A20014393E /* RecipeNetworking.swift in Sources */,
 				99F189821FC32817008FF32F /* MainTabBarController.swift in Sources */,
 				994288611FCC145900CE09CB /* MGPhotoHelper.swift in Sources */,
+
 				6C7EC93D1FB2424B0014393E /* Recipe.swift in Sources */,
 				6C11B1F11FA8E3C200ADB414 /* AppDelegate.swift in Sources */,
-				6C3118EF1FB186C3001B7D47 /* WastonNetworking.swift in Sources */,
+				6CE0A7241FC4FE47008BB306 /* IngredientCell.swift in Sources */,
+				6C7EC81F1FC3CF49007A6312 /* BasicAuth.swift in Sources */,
+				6CE0A71E1FC4F38C008BB306 /* TabBarVC.swift in Sources */,
+				6CE0A7201FC4FD5C008BB306 /* IngredientVC.swift in Sources */,
+				6CC777051FB622C40030C0FF /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +465,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9JYNRTHSJ3;
 				INFOPLIST_FILE = "$(SRCROOT)/Grocery/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Melody-Yang.Grocery";
@@ -436,6 +481,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9JYNRTHSJ3;
 				INFOPLIST_FILE = "$(SRCROOT)/Grocery/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Melody-Yang.Grocery";
