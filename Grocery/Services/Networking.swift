@@ -43,6 +43,8 @@ enum Route {
                            "Content-Type": "application/json",
                            "Accept": "application/json"]
             return headers
+        case .analyzeImage:
+            return ["Content-Type": ""]
         default:
             let headers = ["Content-Type": "application/json",
                            "Accept": "application/json"]
@@ -65,6 +67,7 @@ enum Route {
                              "Accept-Language": "en",
                              //TODO: pass in dynamic ImageURL
                              "url": "https://www.edamam.com/web-img/58a/58a93a8d0c48110ac1c59e3b6e82a9ef.jpg"]
+            
             return urlParams
         default:
             let urlParams = ["email": String(describing: keychain.get("email")!)]
@@ -90,7 +93,7 @@ enum Route {
     
     func method() -> String {
         switch self {
-        case .createUser, .saveRecipe:
+        case .createUser, .saveRecipe, .analyzeImage:
             return "POST"
         case .deleteRecipe:
             return "DELETE"
@@ -137,6 +140,8 @@ class Networking {
             }.resume()
         
     }
+    
+//    func uploadImage(route: Route, )
     
 }
 

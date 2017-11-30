@@ -26,7 +26,7 @@ class RecipeVC: UIViewController {
             let recipeList = try? JSONDecoder().decode(RecipeList.self, from: data)
             guard let recipe = recipeList?.hits else { return }
             self.recipes = recipe
-            print(self.recipes)
+//            print(self.recipes)
         
             DispatchQueue.main.async {
                 self.collectionView.reloadData()

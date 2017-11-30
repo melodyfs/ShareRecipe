@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MGPhotoHelper: NSObject {
+class PhotoHelper: NSObject {
     
     // MARK: - Properties
     
@@ -23,18 +23,15 @@ class MGPhotoHelper: NSObject {
         
         let alertController = UIAlertController(title: nil, message: "Where do you want to get your picture from?", preferredStyle: .actionSheet)
         
-        // 2
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            // 3
+  
             let capturePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { [unowned self] action in
                 self.presentImagePickerController(with: .camera, from: viewController)
             })
             
-            // 4
             alertController.addAction(capturePhotoAction)
         }
         
-        // 5
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let uploadAction = UIAlertAction(title: "Upload from Library", style: .default, handler: { [unowned self] action in
                 self.presentImagePickerController(with: .photoLibrary, from: viewController)
@@ -43,11 +40,9 @@ class MGPhotoHelper: NSObject {
             alertController.addAction(uploadAction)
         }
         
-        // 6
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         
-        // 7
         viewController.present(alertController, animated: true)
     }
     

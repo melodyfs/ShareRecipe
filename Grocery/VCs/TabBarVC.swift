@@ -1,27 +1,44 @@
 //
-//  TabBarVC.swift
+//  MainTabBarController.swift
 //  Grocery
 //
-//  Created by Melody on 11/21/17.
+//  Created by Mac on 11/20/17.
 //  Copyright © 2017 Melody Yang. All rights reserved.
 //
 
 import UIKit
+import Foundation
 
 class TabBarVC: UITabBarController {
-
+    
+    //  Creates instance of MGPhotoHelper
+    let photoHelper = PhotoHelper()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+    //  Runs function after recieving image
+        photoHelper.completionHandler = { image in
+            print("handle image")
+        }
+        
+        delegate = self
+        tabBar.unselectedItemTintColor = .black
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    
+extension TabBarVC: UITabBarControllerDelegate {
+//    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+//        if viewController.tabBarItem.tag == 1 {
+//        // Presents action sheet from "self" which is MainTabBarController
+////            photoHelper.presentActionSheet(from: self)
+//            return false
+//
+//        } else {
+//            return true
+//        }
+//    }
 
+
+   
 }

@@ -11,6 +11,7 @@ import UIKit
 class IngredientVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
 
     @IBAction func seeRecipeTapped(_ sender: Any) {
  
@@ -50,12 +51,8 @@ extension IngredientVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! IngredientCell
-//        let collection = collections[indexPath.row]
-//
-//        cell.collectionNameLabel.text = collection.collection_name
-//        cell.delegate = self
-//        cell.configureCell(collection: collection)
-//
+
+
         return cell
     }
     
