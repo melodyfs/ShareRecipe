@@ -28,17 +28,5 @@ class TabBarVC: UITabBarController {
 }
 
 extension TabBarVC: UITabBarControllerDelegate {
-//    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-//        if viewController.tabBarItem.tag == 1 {
-//        // Presents action sheet from "self" which is MainTabBarController
-////            photoHelper.presentActionSheet(from: self)
-//            return false
-//
-//        } else {
-//            return true
-//        }
-//    }
 
-
-   
 }

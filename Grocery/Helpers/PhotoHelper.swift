@@ -25,7 +25,7 @@ class PhotoHelper: NSObject {
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
   
-            let capturePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { [unowned self] action in
+            let capturePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { action in
                 self.presentImagePickerController(with: .camera, from: viewController)
             })
             
@@ -33,7 +33,7 @@ class PhotoHelper: NSObject {
         }
         
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let uploadAction = UIAlertAction(title: "Upload from Library", style: .default, handler: { [unowned self] action in
+            let uploadAction = UIAlertAction(title: "Upload from Library", style: .default, handler: { action in
                 self.presentImagePickerController(with: .photoLibrary, from: viewController)
             })
             

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -273,10 +274,10 @@
             </objects>
             <point key="canvasLocation" x="2999" y="482"/>
         </scene>
-        <!--View Controller-->
+        <!--Video Editor Controller-->
         <scene sceneID="wzc-6W-o42">
             <objects>
-                <viewController id="o8J-gC-uqa" sceneMemberID="viewController">
+                <viewController id="o8J-gC-uqa" customClass="UIVideoEditorController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yc5-sa-xxx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -325,23 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ZA-Tu-4ao" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3823" y="411"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="YtA-8g-93Z">
-            <objects>
-                <viewController id="5Tf-YB-3WP" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lAe-DW-gSc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="D1Z-aY-Fl9"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="mvI-Ki-eZ0"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WOB-W3-S9t" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1481" y="1156"/>
+            <point key="canvasLocation" x="1561" y="1156"/>
         </scene>
         <!--Tab BarVC-->
         <scene sceneID="Csa-2G-h7S">
@@ -393,7 +378,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="5Tf-YB-3WP" kind="relationship" relationship="rootViewController" id="wXq-Lw-Zw3"/>
+                        <segue destination="o8J-gC-uqa" kind="show" id="5FL-fi-osB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3g-3d-EeF" userLabel="First Responder" sceneMemberID="firstResponder"/>

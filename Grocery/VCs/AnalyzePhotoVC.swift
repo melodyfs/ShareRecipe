@@ -35,6 +35,8 @@ class AnalyzePhotoVC: UIViewController {
     }
     
     @IBAction func openLibraryTapped(_ sender: Any) {
+//        let photoHelper = PhotoHelper()
+//        photoHelper.presentActionSheet(from: self)
         openPhotoLibrary()
     }
     
@@ -43,28 +45,7 @@ class AnalyzePhotoVC: UIViewController {
     }
     
     @IBAction func analyzeTapped(_ sender: Any) {
-        
-        UploadImage.upload(file: imageUrl!) { data in
-            let image = try? JSONDecoder().decode(ImageClass.self, from: data)
-
-            guard let value0 = image?.images[0].classifiers[0].classes[0].classValue else {return}
-            print(value0)
-            guard let value1 = image?.images[0].classifiers[0].classes[1].classValue else {return}
-            print(value1)
-            guard let value2 = image?.images[0].classifiers[0].classes[2].classValue else {return}
-            print(value2)
-            guard let value3 = image?.images[0].classifiers[0].classes[3].classValue else {return}
-            print(value3)
-            guard let value4 = image?.images[0].classifiers[0].classes[4].classValue else {return}
-            print(value4)
-            guard let value5 = image?.images[0].classifiers[0].classes[5].classValue else {return}
-            print(value5)
-            guard let value6 = image?.images[0].classifiers[0].classes[6].classValue else {return}
-            print(value6)
-            
-            self.classValues += [value0, value1, value2, value3, value4, value5, value6]
-            
-        }
+        uploadPhoto()
         
         DispatchQueue.main.async {
             let v = self.classValues.joined(separator: ", ")
