@@ -217,9 +217,13 @@ class Recipe(Resource):
 
         return (target, 200, None)
 
+class Global_Recipes(Resource):
+    
+
 ##api routes
 api.add_resource(User,'/users')
 api.add_resource(Recipe,'/recipes')
+api.add_resource(Global_Recipes, '/global_recipes')
 
 #  Custom JSON serializer for flask_restful
 @api.representation('application/json')
