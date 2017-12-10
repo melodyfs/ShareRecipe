@@ -12,8 +12,26 @@ import UPCarouselFlowLayout
 class RecipeVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var searchField: UITextField!
     var recipes = [Recipe]()
     
+    @IBAction func searchPressed(_ sender: Any) {
+        
+        let input = ["q": "\(searchField.text)"]
+        
+        Networking.shared.fetch(route: .getRecipe, data: nil, params: input) { data in
+            let recipeList = try? JSONDecoder().decode(RecipeList.self, from: data)
+            guard let recipe = recipeList?.hits else { return }
+            self.recipes = recipe
+            //            print(self.recipes)
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,16 +40,7 @@ class RecipeVC: UIViewController {
         
         //TODO: Pass ingredient to params
         
-        Networking.shared.fetch(route: .getRecipe, data: nil, params: [:]) { data in
-            let recipeList = try? JSONDecoder().decode(RecipeList.self, from: data)
-            guard let recipe = recipeList?.hits else { return }
-            self.recipes = recipe
-//            print(self.recipes)
         
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
     }
 
     override func didReceiveMemoryWarning() {
