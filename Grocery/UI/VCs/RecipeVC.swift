@@ -9,21 +9,24 @@
 import UIKit
 import UPCarouselFlowLayout
 
+
 class RecipeVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var searchField: UITextField!
     var recipes = [Recipe]()
-    
+
     @IBAction func searchPressed(_ sender: Any) {
         
         let input = ["q": "\(searchField.text)"]
+        let ingredientTableVC = IngredientTableVC()
         
         Networking.shared.fetch(route: .getRecipe, data: nil, params: input) { data in
             let recipeList = try? JSONDecoder().decode(RecipeList.self, from: data)
             guard let recipe = recipeList?.hits else { return }
             self.recipes = recipe
-            //            print(self.recipes)
+//            print(self.recipes)
+
             
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -37,9 +40,6 @@ class RecipeVC: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        //TODO: Pass ingredient to params
-        
         
     }
 
@@ -65,9 +65,9 @@ extension RecipeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCell
         let recipe = recipes[indexPath.row]
-        
+    
         cell.recipeNameLabel.text = recipe.label
-        
+       
         DispatchQueue.main.async {
             cell.recipeImageView?.getImageFromURL(url: recipe.image!)
         }
@@ -75,4 +75,22 @@ extension RecipeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let recipe = recipes[indexPath.row]
+        let recipeDetailVC = storyboard?.instantiateViewController(withIdentifier: "recipeDetailVC") as! RecipeDetailVC
+        
+        recipeDetailVC.recipeName = recipe.label!
+        recipeDetailVC.imageURL = recipe.image
+        recipeDetailVC.ingredients = recipe.ingredientLines as! [String]
+        recipeDetailVC.recipeURL = recipe.url
+        
+        self.navigationController?.pushViewController(recipeDetailVC, animated: true)
+    }
+    
+    
 }
+
+
+
+
+

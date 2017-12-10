@@ -8,8 +8,10 @@
 
 import UIKit
 
-class IngredientTableCell: UITableViewCell {
 
+
+class IngredientTableCell: UITableViewCell {
+ 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

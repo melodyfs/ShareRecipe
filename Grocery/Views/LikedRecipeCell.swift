@@ -1,24 +1,21 @@
 //
-//  IngredientCell.swift
+//  LikedRecipeCell.swift
 //  Grocery
 //
-//  Created by Melody on 11/21/17.
+//  Created by Melody on 12/10/17.
 //  Copyright © 2017 Melody Yang. All rights reserved.
 //
 
 import UIKit
 
-class IngredientCell: UITableViewCell {
+class LikedRecipeCell: UITableViewCell {
 
-    @IBOutlet weak var ingredientImage: UIImageView!
-    @IBOutlet weak var ingredientLabel: UILabel!
-    
+    @IBOutlet weak var recipeImageView: UIImageView!
+    @IBOutlet weak var recipeName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
-    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

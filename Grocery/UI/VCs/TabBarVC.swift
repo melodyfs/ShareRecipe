@@ -11,19 +11,9 @@ import Foundation
 
 class TabBarVC: UITabBarController {
     
-    //  Creates instance of MGPhotoHelper
-    let photoHelper = PhotoHelper()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    //  Runs function after recieving image
-        photoHelper.completionHandler = { image in
-            print("handle image")
-        }
-        
-        delegate = self
-        tabBar.unselectedItemTintColor = .black
+    
     }
 }
 

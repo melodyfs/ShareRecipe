@@ -8,12 +8,12 @@
 
 import UIKit
 
+
 class RecipeCell: UICollectionViewCell {
     
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var recipeNameLabel: UILabel!
     
-    @IBAction func viewTapped(_ sender: Any) {
-        
-    }
+
+
 }

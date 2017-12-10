@@ -120,10 +120,33 @@ class Recipe(Resource):
         ingredientLines = new_recipe.get('ingredientLines')
         url = new_recipe.get('url')
         imageURL = new_recipe.get('imageURL')
+
+        target_recipeName = request.args.get('recipeName')
+        ingredientOptions = new_recipe.get('options')
+        note = new_recipe.get('note')
+
         recipe_col = app.db.recipes
 
-        check_recipe = recipe_col.find({'email': email,'recipes.recipeName': {'$exists':True}})
+        # check whether the user has added a note before
+        check_note = recipe_col.find({'emai': email, 'recipe.recipeName.notes': {'$exists':True}})
+        # add user's notes for certain recipe
+        if check_note and target_recipeName and ingredientOptions and note:
+            # pdb.set_trace()
+            result = recipe_col.update(
+                {"email": email, 'recipes.recipeName': target_recipeName},
+                {'$push':
+                    {"recipes.$.notes": {
+                                'ingredientOptions': ingredientOptions,
+                                'note': note
+                            }
 
+                    }
+                }
+            )
+
+            return (result, 200, None)
+        # if the recipe container (array) exists, insert the new recipe object
+        check_recipe = recipe_col.find({'email': email,'recipes.recipeName': {'$exists':True}})
         if check_recipe:
             result = recipe_col.update_one(
                 {"email": email},
@@ -140,17 +163,22 @@ class Recipe(Resource):
             )
             return (result, 200, None)
 
+        # for brand new user
         result = recipe_col.insert(
             {  "email": email,
                 "recipes": [
-	             {
-                    "recipeName": name,
-	                "ingredientLines": ingredientLines,
-	                 "url": url,
-	                 "imageURL": imageURL
-	           }]
+                 {
+                   "recipeName": name,
+                   "ingredientLines": ingredientLines,
+                   "url": url,
+                   "imageURL": imageURL,
+                   'notes':[]
+                 }]
             })
-        return (result, 201, None)
+        return (result, 200, None)
+
+
+        # return (result, 201, None)
 
     def get(self):
         email = request.args.get('email')
@@ -218,7 +246,46 @@ class Recipe(Resource):
         return (target, 200, None)
 
 class Global_Recipes(Resource):
-    
+
+    def post(self):
+        new_recipe = request.json
+        email = request.args.get('email')
+        name = new_recipe.get('recipeName')
+
+        ingredientOptions = new_recipe.get('options')
+        note = new_recipe.get('note')
+
+        global_recipe_col = app.db.global_recipes
+
+        check_recipe = global_recipe_col.find_one({'recipeName': name})
+        # import pdb; pdb.set_trace()
+        if check_recipe:
+            result = global_recipe_col.update_one(
+                {'recipeName': name},
+                {'$addToSet':
+                    {"options": {
+                        'email': email,
+                        'ingredientOptions': ingredientOptions,
+                        'note': note
+                        }
+
+                    }
+                }
+            )
+            return (result, 201, None)
+
+        result = global_recipe_col.insert(
+            { "recipeName": name,
+                "options": [
+                 {
+                    'email': email,
+                    'ingredientOptions': ingredientOptions,
+                    'note': note
+                 }]
+            })
+
+        return (result, 200, None)
+
 
 ##api routes
 api.add_resource(User,'/users')
