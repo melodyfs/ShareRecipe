@@ -8,5 +8,6 @@ target 'Grocery' do
   # Pods for Grocery
   pod 'KeychainSwift', '~> 9.0'
   pod "UPCarouselFlowLayout"
+  pod 'Gloss', '~> 2.0'
 
 end

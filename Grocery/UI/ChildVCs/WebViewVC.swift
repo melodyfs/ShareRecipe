@@ -12,6 +12,7 @@ import WebKit
 class WebViewVC: UIViewController, WKNavigationDelegate {
 
     @IBOutlet weak var webView: WKWebView!
+    var urlString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,7 @@ class WebViewVC: UIViewController, WKNavigationDelegate {
         webView.navigationDelegate = self
         view = webView
         
-        let url = URL(string: "http://norecipes.com/recipe/vanilla-extract-recipe")!
+        let url = URL(string: "\(urlString)")!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
 

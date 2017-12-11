@@ -19,15 +19,20 @@ enum Route {
     case deleteRecipe
     case getRecipe
     case analyzeImage
+    case shareNote
+    case retrieveRecipe
+    case saveNote
     
     func path() -> String {
         switch self {
         case .createUser, .getUser:
             return "http://127.0.0.1:5000/users"
-        case .saveRecipe, .deleteRecipe:
+        case .saveRecipe, .deleteRecipe, .retrieveRecipe, .saveNote:
             return "http://127.0.0.1:5000/recipes"
         case .getRecipe:
             return "https://api.edamam.com/search"
+        case .shareNote:
+            return "http://127.0.0.1:5000/global_recipes"
         case .analyzeImage:
             return "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify"
         }
@@ -35,8 +40,11 @@ enum Route {
     
     func headers() -> [String: String] {
         switch self {
-        case .createUser:
-            return [:]
+        case .getUser:
+            let headers = ["Content-Type": "application/json",
+                           "Accept": "application/json",
+                           "Authorization": String(describing: keychain.get("BasicAuth")!)]
+            return headers
         case .getRecipe:
             let headers = ["app_id": "b50e6417",
                            "app_key":"c845cafa9a669a2a5db0148d11af4e93",
@@ -58,6 +66,8 @@ enum Route {
         switch self {
         case .createUser:
             return [:]
+        case .getUser, .retrieveRecipe:
+            return  ["email": "\(keychain.get("email")!)"]
         case .getRecipe:
             return ["q": ""]
         case .analyzeImage:
@@ -79,10 +89,18 @@ enum Route {
         let encoder = JSONEncoder()
         
         switch self {
-//        case .createUser:
-//            guard let model = data as? User else {return nil}
-//            let result = try? encoder.encode(model)
-//            return result
+        case .createUser:
+            guard let model = data as? User else {return nil}
+            let result = try? encoder.encode(model)
+            return result
+        case .saveRecipe:
+            guard let model = data as? UserRecipe else {return nil}
+            let result = try? encoder.encode(model)
+            return result
+        case .saveNote:
+            guard let model = data as? Notes else {return nil}
+            let result = try? encoder.encode(model)
+            return result
         default:
 //            let error = ["error": "incorrect method"]
 //            let jsonErr = try? JSONSerialization.data(withJSONObject: error)
@@ -93,7 +111,7 @@ enum Route {
     
     func method() -> String {
         switch self {
-        case .createUser, .saveRecipe, .analyzeImage:
+        case .createUser, .analyzeImage, .shareNote, .saveRecipe, .saveNote:
             return "POST"
         case .deleteRecipe:
             return "DELETE"

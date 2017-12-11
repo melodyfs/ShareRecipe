@@ -1,15 +1,18 @@
 PODS:
+  - Gloss (2.0.0)
   - KeychainSwift (9.0.2)
   - UPCarouselFlowLayout (1.1.1)
 
 DEPENDENCIES:
+  - Gloss (~> 2.0)
   - KeychainSwift (~> 9.0)
   - UPCarouselFlowLayout
 
 SPEC CHECKSUMS:
+  Gloss: b67617f327406adfd47adf20172d00680a3a31bd
   KeychainSwift: 3ab1d428d0dbff59cd056f1d0bfc640b36c2b081
   UPCarouselFlowLayout: 02045c1505d63057fba3d9975be880a8d16bf17d
 
-PODFILE CHECKSUM: 08315599eb50d2dda93f13a4cd62b6101fa7c6fa
+PODFILE CHECKSUM: 801c853305ee2aa2b28203d1c5e0258018d5bde6
 
 COCOAPODS: 1.2.1

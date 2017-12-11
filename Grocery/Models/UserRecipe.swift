@@ -7,3 +7,23 @@
 //
 
 import Foundation
+
+struct UserRecipe: Codable {
+    var email: String?
+    var recipes: [Recipes]
+
+}
+
+struct Recipes: Codable {
+    var image: String?
+    var url : String?
+    var recipeName: String?
+    var ingredientLines = [String?]()
+    var notes = [Notes?]()
+}
+
+struct Notes: Codable {
+    var ingredientOptions: String?
+    var note: String?
+}
+
