@@ -15,7 +15,7 @@ struct UserRecipe: Codable {
 }
 
 struct Recipes: Codable {
-    var image: String?
+    var imageURL: String?
     var url : String?
     var recipeName: String?
     var ingredientLines = [String?]()

@@ -58,12 +58,14 @@ extension OptionTableVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "optionTableCell", for: indexPath) as! OptionTableCell
         let ingredient = ingredients[indexPath.row]
         
-        cell.textLabel?.text = ingredient
-        
         if ingredientOptions != nil && notes != nil {
             cell.textLabel?.text = ingredientOptions
             cell.detailTextLabel?.text = notes
         }
+        
+        cell.textLabel?.text = ingredient
+        
+        
         
         return cell
     }

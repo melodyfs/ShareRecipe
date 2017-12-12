@@ -41,7 +41,7 @@ class RecipeDetailVC: UIViewController {
         
         let param = ["email": "\(keychain.get("email")!)"]
         
-        let recipe = Recipes(image: imageURL!, url: recipeURL!, recipeName: recipeName!, ingredientLines: ingredients, notes: [])
+        let recipe = Recipes(imageURL: imageURL!, url: recipeURL!, recipeName: recipeName!, ingredientLines: ingredients, notes: [])
         let likedRecipe = UserRecipe(email: "\(keychain.get("email")!)", recipes: [recipe])
        
         
@@ -105,7 +105,8 @@ extension RecipeDetailVC {
         let ingredientTableVC = storyboard?.instantiateViewController(withIdentifier: "ingredientTableVC")
         addChildViewController(ingredientTableVC!)
         
-        detailView.addSubview(subview!)
+        detailView.addSubview((ingredientTableVC?.view!)!)
+        ingredientTableVC?.view.anchorToSuperview()
         detailView.autoresizesSubviews = true
         detailView.clipsToBounds = true
 //        detailView.subviews.frame =

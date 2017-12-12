@@ -115,11 +115,11 @@ class Recipe(Resource):
 
     def post(self):
         new_recipe = request.json
+        # import pdb; pdb.set_trace()
+        # new_recipe['recipeName']
+
         email = request.args.get('email')
-        name = new_recipe.get('recipeName')
-        ingredientLines = new_recipe.get('ingredientLines')
-        url = new_recipe.get('url')
-        imageURL = new_recipe.get('imageURL')
+
 
         target_recipeName = request.args.get('recipeName')
         ingredientOptions = new_recipe.get('options')
@@ -128,7 +128,7 @@ class Recipe(Resource):
         recipe_col = app.db.recipes
 
 
-
+        # import pdb; pdb.set_trace()
 
         # for brand new user
 
@@ -154,21 +154,27 @@ class Recipe(Resource):
             # if the recipe container (array) exists, insert the new recipe object
             # check_recipe = recipe_col.find({'email': email,'recipes.recipeName': {'$exists':True}})
             # if check_recipe:
-            result = recipe_col.update(
-                {"email": email},
-                {'$push':
-                    {'recipes': {
-                        "recipeName": name,
-    	                "ingredientLines": ingredientLines,
-    	                 "url": url,
-    	                 "imageURL": imageURL,
-                         'notes':[]
-                         }
-                    }
-                }
 
+            new_ = new_recipe['recipes'][0]
+            name = new_.get('recipeName')
+            ingredientLines = new_.get('ingredientLines')
+            url = new_.get('url')
+            imageURL = new_.get('imageURL')
+
+            obj = {'recipes': {
+                    'recipeName': name,
+                    'ingredientLines': ingredientLines,
+                     'url': url,
+                     'imageURL': imageURL,
+                     'notes':[]
+                     }
+                }
+            # import pdb; pdb.set_trace()
+
+            result = recipe_col.update(
+                {"email": email}, {'$push':obj}
             )
-            import pdb; pdb.set_trace()
+            # import pdb; pdb.set_trace()
             return (result, 200, None)
 
         result = recipe_col.insert(
@@ -192,9 +198,12 @@ class Recipe(Resource):
         email = request.args.get('email')
         name = request.args.get('recipeName')
         recipe_col = app.db.recipes
-        # import pdb; pdb.set_trace()
+
         if name:
-            target = recipe_col.find_one({'email': email,'recipes.recipeName': name})
+            target = recipe_col.find_one(
+                {'email': email, 'recipes.recipeName': name},
+                {'recipes.$': 1});
+
             return (target, 200, None)
 
         target = recipe_col.find_one({'email': email})

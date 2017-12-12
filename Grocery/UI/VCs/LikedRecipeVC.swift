@@ -51,7 +51,7 @@ extension LikedRecipeVC: UITableViewDelegate, UITableViewDataSource {
         cell.recipeName.text = recipe.recipeName
         
         DispatchQueue.main.async {
-//            cell.recipeImageView.getImageFromURL(url: recipe.image!)
+            cell.recipeImageView.getImageFromURL(url: recipe.imageURL!)
         }
         
         return cell
@@ -62,10 +62,11 @@ extension LikedRecipeVC: UITableViewDelegate, UITableViewDataSource {
         let recipe = recipes[indexPath.row]
         
         optionsVC.recipeName = recipe.recipeName
-        optionsVC.imageURL = recipe.image
+        optionsVC.imageURL = recipe.imageURL
         optionsVC.ingredients = recipe.ingredientLines as! [String]
         optionsVC.recipeURL = recipe.url
         optionsVC.recipes = recipes
+        
         
         self.navigationController?.pushViewController(optionsVC, animated: true)
     }
