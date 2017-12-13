@@ -122,7 +122,7 @@ class Recipe(Resource):
 
 
         target_recipeName = request.args.get('recipeName')
-        ingredientOptions = new_recipe.get('options')
+        ingredientOptions = new_recipe.get('ingredientOptions')
         note = new_recipe.get('note')
 
         recipe_col = app.db.recipes
@@ -318,7 +318,7 @@ class Global_Recipes(Resource):
 
     def post(self):
         new_recipe = request.json
-        email = request.args.get('email')
+        email = new_recipe.get('email')
         name = new_recipe.get('recipeName')
 
         ingredientOptions = new_recipe.get('options')
@@ -355,6 +355,13 @@ class Global_Recipes(Resource):
 
         return (result, 200, None)
 
+    def get(self):
+        recipeName = request.args.get('recipeName')
+        global_recipe_col = app.db.global_recipes
+
+        result = global_recipe_col.find_one({'recipeName': recipeName})
+
+        return (result, 201, None)
 
 ##api routes
 api.add_resource(User,'/users')

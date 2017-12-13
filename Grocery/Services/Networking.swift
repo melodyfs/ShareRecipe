@@ -20,18 +20,19 @@ enum Route {
     case getRecipe
     case analyzeImage
     case shareNote
-    case retrieveRecipe
+    case retrieveRecipe // retrieve user's own notes
     case saveNote
+    case getGlobalRecipe // get recipe variations
     
     func path() -> String {
         switch self {
         case .createUser, .getUser:
-            return "http://127.0.0.1:5000/users"
+            return "http://127.0.0.1:5000/users" // replace 127.0.0.1 with IP address
         case .saveRecipe, .deleteRecipe, .retrieveRecipe, .saveNote:
             return "http://127.0.0.1:5000/recipes"
         case .getRecipe:
             return "https://api.edamam.com/search"
-        case .shareNote:
+        case .shareNote, .getGlobalRecipe:
             return "http://127.0.0.1:5000/global_recipes"
         case .analyzeImage:
             return "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify"
@@ -64,7 +65,7 @@ enum Route {
     func urlParams() -> [String: String] {
         
         switch self {
-        case .createUser:
+        case .createUser, .getGlobalRecipe:
             return [:]
         case .getUser, .retrieveRecipe:
             return  ["email": "\(keychain.get("email")!)"]
@@ -101,10 +102,11 @@ enum Route {
             guard let model = data as? Notes else {return nil}
             let result = try? encoder.encode(model)
             return result
+        case .shareNote:
+            guard let model = data as? GlobalRecipe else {return nil}
+            let result = try? encoder.encode(model)
+            return result
         default:
-//            let error = ["error": "incorrect method"]
-//            let jsonErr = try? JSONSerialization.data(withJSONObject: error)
-//            return jsonErr
             return nil
         }
     }
@@ -158,8 +160,7 @@ class Networking {
             }.resume()
         
     }
-    
-//    func uploadImage(route: Route, )
+
     
 }
 

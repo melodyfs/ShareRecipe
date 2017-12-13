@@ -10,12 +10,17 @@ import UIKit
 
 class OptionsVC: UIViewController {
    
-    @IBOutlet weak var scrollView: UIView!
-    @IBOutlet weak var tableView: UIView!
+//    @IBOutlet weak var scrollView: UIView!
+//    @IBOutlet weak var tableView: UIView!
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeImageView: UIImageView!
     
     var recipes = [Recipes]()
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionStack: UIStackView!
+    @IBOutlet weak var tableView: UITableView!
+    
     
     var recipeName: String!
     var imageURL: String!
@@ -23,35 +28,40 @@ class OptionsVC: UIViewController {
     var recipeURL: String!
 //    var userRecipes = [Recipes]()
     
-    var notes: Notes!
+    var notes: String!
+    var notesArr = [String]()
+    var options = [Options]()
     
 //    func passData(data: String) {
 //        print("got data")
 //    }
     
     @IBAction func addNotes(_ sender: Any) {
-        var inputOption = ""
-        var inputNote = ""
-        
         let alertController = UIAlertController(title: "Add Some Notes", message: "What other ingredient did you add?", preferredStyle: .alert)
-       alertController.addTextField { (textField : UITextField) -> Void in
+       
+        alertController.addTextField { (textField : UITextField) -> Void in
             textField.placeholder = "Other ingredients"
-            inputOption = textField.text!
         }
+        
         alertController.addTextField { (textField : UITextField) -> Void in
             textField.placeholder = "Add some notes"
-            inputNote = textField.text!
         }
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
         }
         
         
         
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-            self.notes = Notes(ingredientOptions: inputOption, note: inputNote)
+
+            let textField1 = alertController.textFields?.first?.text
+            let textField2 = alertController.textFields?[1].text
+            
+            let newNote = Notes(ingredientOptions: textField1, note: textField2)
+            let param = ["email": "\(keychain.get("email")!)", "recipeName": self.recipeName!]
+            Networking.shared.fetch(route: .saveNote, data: newNote, params: param) { _ in}
+            
         }
-        
-        
         
         alertController.addAction(cancelAction)
         
@@ -61,11 +71,7 @@ class OptionsVC: UIViewController {
     }
     
     @IBAction func ingredientsPressed(_ sender: Any) {
-//        showCollectionView()
-//        passDataToCollectionView()
-        passDataToTableView()
-        scrollView.isHidden = false
-        
+        collectionStack.insertArrangedSubview(collectionView, at: 0)
     }
     
     @IBAction func stepsPressed(_ sender: Any) {
@@ -76,46 +82,41 @@ class OptionsVC: UIViewController {
     }
     
     @IBAction func notesPressed(_ sender: Any) {
-         let param = ["email": "\(keychain.get("email")!)", "recipeName": recipeName!]
-        Networking.shared.fetch(route: .retrieveRecipe, data: nil, params: param) { data in
-            let note = try? JSONDecoder().decode(UserRecipe.self, from: data)
-            let recipeList = note?.recipes
-            self.recipes = recipeList!
-            
-//            print(note)
-        }
-        scrollView.isHidden = true
+        let param = ["email": "\(keychain.get("email")!)", "recipeName": recipeName!]
+        collectionStack.removeArrangedSubview(collectionView)
         
-        
+        ingredients = notesArr
+        self.tableView.reloadData()
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        showCollectionView()
-        showIngredientTableView()
     
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         recipeNameLabel.text = recipeName
         
         DispatchQueue.main.async {
             self.recipeImageView.getImageFromURL(url: self.imageURL)
+            self.tableView.reloadData()
+            self.collectionView.reloadData()
+        }
+        
+        Networking.shared.fetch(route: .getGlobalRecipe, data: nil, params: ["recipeName": "Cupcake"]) { data in
+            let notes = try? JSONDecoder().decode(GlobalRecipe.self, from: data)
+            self.options = (notes?.options)! as! [Options]
+            print(self.options)
         }
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        passDataToTableView()
-        passDataToCollectionView()
-        
-//        let param = ["email": "\(keychain.get("email")!)", "recipeName": recipeName!]
-//
-//        if notes != nil {
-//             Networking.shared.fetch(route: .saveNote, data: notes, params: param) { _ in}
-//        }
-        
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -126,35 +127,39 @@ class OptionsVC: UIViewController {
     
     
 }
-extension OptionsVC {
+
+extension OptionsVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    func showCollectionView() {
-        let collectionVC = storyboard?.instantiateViewController(withIdentifier: "collectionVC")
-        addChildViewController(collectionVC!)
-        scrollView.addSubview((collectionVC?.view)!)
-    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return notesArr.count
     }
     
-    func showIngredientTableView() {
-        let optionTableVC = storyboard?.instantiateViewController(withIdentifier: "optionTableVC")
-        addChildViewController(optionTableVC!)
-        tableView.addSubview((optionTableVC?.view)!)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "optionCell", for: indexPath)
+        return cell
     }
     
-    func passDataToCollectionView() {
-        if let collectionVC = self.childViewControllers.first as? OptionCollectionVC {
-            collectionVC.recipes = recipes
-        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let option = options[indexPath.row]
+        ingredients = [option.ingredientOptions!, option.note!]
+        tableView.reloadData()
+    }
+}
+
+extension OptionsVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ingredients.count
     }
     
-    func passDataToTableView() {
-        if let optionTableVC = self.childViewControllers[1] as? OptionTableVC {
-            optionTableVC.ingredients = ingredients
-        }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
+        let ingredient = ingredients[indexPath.row]
+        
+        cell.textLabel?.text = ingredient
+    
+        return cell
     }
-    
-    
-    
-    
     
 }

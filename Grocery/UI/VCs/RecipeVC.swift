@@ -13,6 +13,9 @@ import UPCarouselFlowLayout
 class RecipeVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet var availableView: UIView!
+    @IBOutlet var emptyView: UIView!
+    
     @IBOutlet weak var searchField: UITextField!
     var recipes = [Recipe]()
 
@@ -30,6 +33,9 @@ class RecipeVC: UIViewController {
             
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
+                self.emptyView.removeFromSuperview()
+                self.view.addSubview(self.availableView)
+                self.availableView.anchorToSuperview()
             }
         }
         
@@ -41,19 +47,9 @@ class RecipeVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        self.view.addSubview(emptyView)
+        emptyView.anchorToSuperview()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-    }
-
 }
 
 extension RecipeVC: UICollectionViewDelegate, UICollectionViewDataSource {

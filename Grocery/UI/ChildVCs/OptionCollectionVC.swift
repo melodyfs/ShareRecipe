@@ -49,7 +49,7 @@ class OptionCollectionVC: UIViewController {
 extension OptionCollectionVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 10
+        return recipes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -64,11 +64,11 @@ extension OptionCollectionVC: UICollectionViewDelegate, UICollectionViewDataSour
 //        optionCollection.delegate?.passData(data: (recipe.notes[indexPath.row]?.ingredientOptions)!)
 //        optionCollection.delegate?.passData(data: (recipe.notes[indexPath.row]?.note)!)
         
-//        let optionTable = storyboard?.instantiateViewController(withIdentifier: "optionTableVC") as! OptionTableVC
-//
-//        optionTable.ingredientOptions = recipe.notes[indexPath.row]?.ingredientOptions
-//        optionTable.notes = recipe.notes[indexPath.row]?.note
-//
+        let optionTable = storyboard?.instantiateViewController(withIdentifier: "optionTableVC") as! OptionTableVC
+
+        optionTable.ingredientOptions = recipe.notes[indexPath.row]?.ingredientOptions
+        optionTable.notes = recipe.notes[indexPath.row]?.note
+
 //        self.present(optionTable, animated: false)
     }
     

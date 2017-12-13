@@ -60,13 +60,15 @@ extension LikedRecipeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let optionsVC = storyboard?.instantiateViewController(withIdentifier: "optionsVC") as! OptionsVC
         let recipe = recipes[indexPath.row]
+//        let note = recipe.notes[indexPath.row]
         
         optionsVC.recipeName = recipe.recipeName
         optionsVC.imageURL = recipe.imageURL
         optionsVC.ingredients = recipe.ingredientLines as! [String]
         optionsVC.recipeURL = recipe.url
         optionsVC.recipes = recipes
-        
+//        optionsVC.notesArr = [note?.ingredientOptions, note?.note] as! [String]
+        optionsVC.notesArr = [recipe.notes.first.unsafelyUnwrapped?.ingredientOptions, recipe.notes.first.unsafelyUnwrapped?.note] as! [String]
         
         self.navigationController?.pushViewController(optionsVC, animated: true)
     }

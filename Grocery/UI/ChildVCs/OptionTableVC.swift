@@ -21,6 +21,7 @@ class OptionTableVC: UIViewController {
     var recipes = [Recipes]()
     var ingredientOptions: String!
     var notes: String!
+    var notesArr = [Notes]()
     
 //    var delegate 
     
@@ -34,12 +35,12 @@ class OptionTableVC: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        // Dispose of any resources that cban be recreated.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
+        print("THE NOTE: \(notesArr)")
     }
     
     
@@ -58,7 +59,7 @@ extension OptionTableVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "optionTableCell", for: indexPath) as! OptionTableCell
         let ingredient = ingredients[indexPath.row]
         
-        if ingredientOptions != nil && notes != nil {
+        if notesArr != nil {
             cell.textLabel?.text = ingredientOptions
             cell.detailTextLabel?.text = notes
         }
