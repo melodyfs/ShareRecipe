@@ -30,8 +30,6 @@ class RecipeDetailVC: UIViewController {
         
     }
     @IBAction func stepsPressed(_ sender: Any) {
-//        showStepsWebView()
-//        let webVC = storyboard?.instantiateViewController(withIdentifier: "webViewVC")
         let webVC = storyboard?.instantiateViewController(withIdentifier: "webViewVC") as! WebViewVC
         webVC.urlString = recipeURL
         self.navigationController?.pushViewController(webVC, animated: true)
@@ -44,8 +42,6 @@ class RecipeDetailVC: UIViewController {
         let recipe = Recipes(imageURL: imageURL!, url: recipeURL!, recipeName: recipeName!, ingredientLines: ingredients, notes: [])
         let likedRecipe = UserRecipe(email: "\(keychain.get("email")!)", recipes: [recipe])
        
-        
-        
         Networking.shared.fetch(route: .saveRecipe, data: likedRecipe, params: param) {_ in
             print("Favorated a recipe")
         }
@@ -84,16 +80,8 @@ class RecipeDetailVC: UIViewController {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-//         let ingredientTableVC = storyboard?.instantiateViewController(withIdentifier: "ingredientTableVC")
-//        let subview = ingredientTableVC?.view
-//        subview?.frame = CGRect(x:0, y:0, width: detailView.frame.size.width, height: detailView.frame.size.height)
     }
 
 }
@@ -101,7 +89,6 @@ class RecipeDetailVC: UIViewController {
 extension RecipeDetailVC {
     
     func showIngredientTableView() {
-//        let frame = detailView.convert(buttons.frame, from:secondView)
         let ingredientTableVC = storyboard?.instantiateViewController(withIdentifier: "ingredientTableVC")
         addChildViewController(ingredientTableVC!)
         
@@ -109,7 +96,6 @@ extension RecipeDetailVC {
         ingredientTableVC?.view.anchorToSuperview()
         detailView.autoresizesSubviews = true
         detailView.clipsToBounds = true
-//        detailView.subviews.frame =
 
     }
     

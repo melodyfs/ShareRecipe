@@ -10,8 +10,6 @@ import UIKit
 
 class OptionsVC: UIViewController {
    
-//    @IBOutlet weak var scrollView: UIView!
-//    @IBOutlet weak var tableView: UIView!
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeImageView: UIImageView!
     
@@ -26,15 +24,12 @@ class OptionsVC: UIViewController {
     var imageURL: String!
     var ingredients = [String]()
     var recipeURL: String!
-//    var userRecipes = [Recipes]()
     
     var notes: String!
     var notesArr = [String]()
     var options = [Options]()
-    
-//    func passData(data: String) {
-//        print("got data")
-//    }
+    var n = [Notes?]()
+    var optionCount = 0
     
     @IBAction func addNotes(_ sender: Any) {
         let alertController = UIAlertController(title: "Add Some Notes", message: "What other ingredient did you add?", preferredStyle: .alert)
@@ -50,21 +45,23 @@ class OptionsVC: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
         }
         
-        
-        
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
 
             let textField1 = alertController.textFields?.first?.text
             let textField2 = alertController.textFields?[1].text
-            
+
             let newNote = Notes(ingredientOptions: textField1, note: textField2)
             let param = ["email": "\(keychain.get("email")!)", "recipeName": self.recipeName!]
-            Networking.shared.fetch(route: .saveNote, data: newNote, params: param) { _ in}
             
+            let sharingOption = Options(email:"\(keychain.get("email")!)", ingredientOptions: textField1!, note: textField2!)
+            let sharingNote = GlobalRecipe(recipeName: self.recipeName!, options: [sharingOption])
+            
+            Networking.shared.fetch(route: .saveNote, data: newNote, params: param) { _ in}
+            Networking.shared.fetch(route: .shareNote, data: sharingNote, params: [:]) {_ in}
+            self.tableView.reloadData()
         }
         
         alertController.addAction(cancelAction)
-        
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
         
@@ -106,33 +103,22 @@ class OptionsVC: UIViewController {
             self.collectionView.reloadData()
         }
         
-        Networking.shared.fetch(route: .getGlobalRecipe, data: nil, params: ["recipeName": "Cupcake"]) { data in
-            let notes = try? JSONDecoder().decode(GlobalRecipe.self, from: data)
-            self.options = (notes?.options)! as! [Options]
+        Networking.shared.fetch(route: .getGlobalRecipe, data: nil, params: ["recipeName": recipeName]) { data in
+            guard let notes = try? JSONDecoder().decode(GlobalRecipe.self, from: data) else {return}
+            self.options = (notes.options) as! [Options]
+            self.optionCount = notes.options.count
             print(self.options)
         }
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
 
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    
 }
 
 extension OptionsVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return notesArr.count
+        return optionCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

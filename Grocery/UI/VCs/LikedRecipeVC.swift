@@ -20,21 +20,8 @@ class LikedRecipeVC: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        
         fetchRecipes()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        fetchRecipes()
-    }
-   
-
 }
 
 extension LikedRecipeVC: UITableViewDelegate, UITableViewDataSource {
@@ -60,15 +47,22 @@ extension LikedRecipeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let optionsVC = storyboard?.instantiateViewController(withIdentifier: "optionsVC") as! OptionsVC
         let recipe = recipes[indexPath.row]
-//        let note = recipe.notes[indexPath.row]
         
         optionsVC.recipeName = recipe.recipeName
         optionsVC.imageURL = recipe.imageURL
         optionsVC.ingredients = recipe.ingredientLines as! [String]
         optionsVC.recipeURL = recipe.url
         optionsVC.recipes = recipes
-//        optionsVC.notesArr = [note?.ingredientOptions, note?.note] as! [String]
-        optionsVC.notesArr = [recipe.notes.first.unsafelyUnwrapped?.ingredientOptions, recipe.notes.first.unsafelyUnwrapped?.note] as! [String]
+        
+        if recipe.notes.first??.ingredientOptions != nil {
+            var arr = [String]()
+            for i in 0..<recipe.notes.count {
+                arr.append((recipe.notes[i]?.ingredientOptions)!)
+                arr.append((recipe.notes[i]?.note)!)
+            }
+            optionsVC.notesArr = arr
+            
+        }
         
         self.navigationController?.pushViewController(optionsVC, animated: true)
     }

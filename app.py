@@ -318,11 +318,12 @@ class Global_Recipes(Resource):
 
     def post(self):
         new_recipe = request.json
-        email = new_recipe.get('email')
-        name = new_recipe.get('recipeName')
+        new_ = new_recipe['options'][0]
 
-        ingredientOptions = new_recipe.get('options')
-        note = new_recipe.get('note')
+        email = new_.get('email')
+        name = new_recipe.get('recipeName')
+        ingredientOptions = new_.get('ingredientOptions')
+        note = new_.get('note')
 
         global_recipe_col = app.db.global_recipes
 
