@@ -23,6 +23,7 @@ class OptionsVC: UIViewController {
     var recipeName: String!
     var imageURL: String!
     var ingredients = [String]()
+    var ingredients2 = [String]()
     var recipeURL: String!
     
     var notes: String!
@@ -69,6 +70,8 @@ class OptionsVC: UIViewController {
     
     @IBAction func ingredientsPressed(_ sender: Any) {
         collectionStack.insertArrangedSubview(collectionView, at: 0)
+        ingredients = ingredients2
+        self.tableView.reloadData()
     }
     
     @IBAction func stepsPressed(_ sender: Any) {
@@ -123,6 +126,13 @@ extension OptionsVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "optionCell", for: indexPath)
+        
+        cell.layer.cornerRadius = cell.frame.size.width/2
+        cell.layer.borderWidth = 2.0
+        cell.layer.borderColor = UIColor(red:0.31, green:0.00, blue:0.48, alpha: 0.0).cgColor
+        cell.layer.backgroundColor = UIColor(red:0.49, green:0.76, blue:0.05, alpha:1.0).cgColor
+        cell.layer.masksToBounds = true
+        
         return cell
     }
     
@@ -130,6 +140,7 @@ extension OptionsVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let option = options[indexPath.row]
         ingredients = [option.ingredientOptions!, option.note!]
         tableView.reloadData()
+        
     }
 }
 

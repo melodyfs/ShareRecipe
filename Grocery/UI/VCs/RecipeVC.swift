@@ -49,7 +49,19 @@ class RecipeVC: UIViewController {
         
         self.view.addSubview(emptyView)
         emptyView.anchorToSuperview()
+        
+        let layout = self.collectionView.collectionViewLayout as! UPCarouselFlowLayout
+        layout.spacingMode = UPCarouselFlowLayoutSpacingMode.overlap(visibleOffset: 40)
+        
+        
+    
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
+    }
+    
 }
 
 extension RecipeVC: UICollectionViewDelegate, UICollectionViewDataSource {

@@ -51,6 +51,7 @@ extension LikedRecipeVC: UITableViewDelegate, UITableViewDataSource {
         optionsVC.recipeName = recipe.recipeName
         optionsVC.imageURL = recipe.imageURL
         optionsVC.ingredients = recipe.ingredientLines as! [String]
+        optionsVC.ingredients2 = recipe.ingredientLines as! [String]
         optionsVC.recipeURL = recipe.url
         optionsVC.recipes = recipes
         
@@ -63,7 +64,7 @@ extension LikedRecipeVC: UITableViewDelegate, UITableViewDataSource {
             optionsVC.notesArr = arr
             
         }
-        
+        self.tableView.reloadData()
         self.navigationController?.pushViewController(optionsVC, animated: true)
     }
 }

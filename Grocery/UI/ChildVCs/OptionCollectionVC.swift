@@ -29,6 +29,8 @@ class OptionCollectionVC: UIViewController {
 
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+    
     }
 
     override func didReceiveMemoryWarning() {

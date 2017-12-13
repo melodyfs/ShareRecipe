@@ -32,6 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.makeKeyAndVisible()
 //            self.present(showResult, animated: true)
         }
+        UINavigationBar.appearance().barTintColor = UIColor(red:0.49, green:0.76, blue:0.05, alpha:1.0)
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Avenir Next", size: 20)!]
+        UITabBar.appearance().barTintColor = UIColor(red:0.49, green:0.76, blue:0.05, alpha:1.0)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir Next", size: 20)!], for: .normal)
+        UITabBar.appearance().tintColor = UIColor.white
+        
+
         
         return true
     }

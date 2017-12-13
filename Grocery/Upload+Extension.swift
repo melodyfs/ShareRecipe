@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension AnalyzePhotoVC {
     
@@ -40,3 +41,4 @@ extension AnalyzePhotoVC {
     
     
 }
+

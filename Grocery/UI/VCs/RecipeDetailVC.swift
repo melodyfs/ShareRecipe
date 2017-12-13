@@ -62,6 +62,7 @@ class RecipeDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showIngredientTableView()
+        self.navigationController?.navigationBar.isTranslucent = true
         
         recipeNameLabel.text = recipeName
         
@@ -77,6 +78,7 @@ class RecipeDetailVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         passDataToTableView()
+       
         
     }
 

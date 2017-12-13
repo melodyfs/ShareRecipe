@@ -43,6 +43,7 @@ extension IngredientTableVC: UITableViewDelegate, UITableViewDataSource {
         let ingredient = ingredients[indexPath.row]
         
         cell.textLabel?.text = ingredient
+        cell.textLabel?.font = UIFont(name:"Avenir", size: 18)
         
         return cell
     }
