@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().barTintColor = UIColor(red:0.49, green:0.76, blue:0.05, alpha:1.0)
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir Next", size: 20)!], for: .normal)
         UITabBar.appearance().tintColor = UIColor.white
-        
+//        UITextField.appearance().backgroundColor = UIColor(red:0.49, green:0.76, blue:0.05, alpha:0.3)
 
         
         return true

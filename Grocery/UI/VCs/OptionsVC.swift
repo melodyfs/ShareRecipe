@@ -125,12 +125,14 @@ extension OptionsVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "optionCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "optionCell", for: indexPath) as! OptionCell
+        
+       cell.numberLabel.text = String(indexPath.item + 1)
         
         cell.layer.cornerRadius = cell.frame.size.width/2
         cell.layer.borderWidth = 2.0
         cell.layer.borderColor = UIColor(red:0.31, green:0.00, blue:0.48, alpha: 0.0).cgColor
-        cell.layer.backgroundColor = UIColor(red:0.49, green:0.76, blue:0.05, alpha:1.0).cgColor
+        cell.layer.backgroundColor = UIColor(red:0.95, green:0.90, blue:0.73, alpha:1.0).cgColor
         cell.layer.masksToBounds = true
         
         return cell
@@ -139,6 +141,8 @@ extension OptionsVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let option = options[indexPath.row]
         ingredients = [option.ingredientOptions!, option.note!]
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.backgroundColor = UIColor(red:0.94, green:0.62, blue:0.66, alpha:1.0).cgColor
         tableView.reloadData()
         
     }

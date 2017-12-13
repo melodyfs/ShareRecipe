@@ -15,5 +15,4 @@ class RecipeCell: UICollectionViewCell {
     @IBOutlet weak var recipeNameLabel: UILabel!
     
 
-
 }
