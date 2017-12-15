@@ -52,6 +52,7 @@ class RecipeVC: UIViewController {
         
         let layout = self.collectionView.collectionViewLayout as! UPCarouselFlowLayout
         layout.spacingMode = UPCarouselFlowLayoutSpacingMode.overlap(visibleOffset: 40)
+        
         searchField.backgroundColor = UIColor(red:0.49, green:0.76, blue:0.05, alpha:0.2)
         
     

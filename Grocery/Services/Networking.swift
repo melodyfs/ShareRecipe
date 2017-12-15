@@ -24,6 +24,8 @@ enum Route {
     case saveNote
     case getGlobalRecipe // get recipe variations
     
+    //10.206.106.47
+    //127.0.0.1
     func path() -> String {
         switch self {
         case .createUser, .getUser:
