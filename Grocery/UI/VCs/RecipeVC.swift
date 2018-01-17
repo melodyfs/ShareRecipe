@@ -21,10 +21,10 @@ class RecipeVC: UIViewController {
 
     @IBAction func searchPressed(_ sender: Any) {
         
-        let input = ["q": "\(searchField.text)"]
+        let input = searchField.text
         let ingredientTableVC = IngredientTableVC()
         
-        Networking.shared.fetch(route: .getRecipe, data: nil, params: input) { data in
+        GetRecipe.shared.fetch(queryParam: input!) { data in
             let recipeList = try? JSONDecoder().decode(RecipeList.self, from: data)
             guard let recipe = recipeList?.hits else { return }
             self.recipes = recipe

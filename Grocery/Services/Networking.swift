@@ -17,23 +17,23 @@ enum Route {
     case getUser
     case saveRecipe
     case deleteRecipe
-    case getRecipe
+    case getRecipe(query: String)
     case analyzeImage
     case shareNote
     case retrieveRecipe // retrieve user's own notes
     case saveNote
     case getGlobalRecipe // get recipe variations
-    
     //10.206.106.47
     //127.0.0.1
     func path() -> String {
+        
         switch self {
         case .createUser, .getUser:
             return "http://127.0.0.1:5000/users" // replace 127.0.0.1 with IP address
         case .saveRecipe, .deleteRecipe, .retrieveRecipe, .saveNote:
             return "http://127.0.0.1:5000/recipes"
-        case .getRecipe:
-            return "https://api.edamam.com/search"
+        case let .getRecipe(query):
+            return "https://api.edamam.com/search?app_id=b50e6417&app_key=c845cafa9a669a2a5db0148d11af4e93&q=\(query)"
         case .shareNote, .getGlobalRecipe:
             return "http://127.0.0.1:5000/global_recipes"
         case .analyzeImage:
@@ -49,8 +49,7 @@ enum Route {
                            "Authorization": String(describing: keychain.get("BasicAuth")!)]
             return headers
         case .getRecipe:
-            let headers = ["app_id": "b50e6417",
-                           "app_key":"c845cafa9a669a2a5db0148d11af4e93",
+            let headers = [
                            "Content-Type": "application/json",
                            "Accept": "application/json"]
             return headers
@@ -72,7 +71,7 @@ enum Route {
         case .getUser, .retrieveRecipe:
             return  ["email": "\(keychain.get("email")!)"]
         case .getRecipe:
-            return ["q": ""]
+            return ["q": "vallina"]
         case .analyzeImage:
             let urlParams = ["api_key": "a33be142c28212ecf61c5fd19f05a76a08e845d7",
                              "version": "2016-05-20",
@@ -136,6 +135,7 @@ class Networking {
     func fetch(route: Route, data: Encodable?, params: [String:String]?, completion: @escaping (Data) -> Void) {
         let base = route.path()
         var url = URL(string: base)!
+//        var q = params?.values
         
         if (params?.isEmpty)! {
             url = url.appendingQueryParameters(route.urlParams())
