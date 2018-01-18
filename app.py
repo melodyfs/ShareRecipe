@@ -9,7 +9,7 @@ import pdb
 
 app = Flask(__name__)
 # mongo = MongoClient('localhost', 27017)
-mongo = MongoClient('mongodb:/melodyfs:Melody0116@ds261247.mlab.com:61247/grocery_development')
+mongo = MongoClient('mongodb:/test:test@ds261247.mlab.com:61247/')
 app.db = mongo.grocery_development
 api = Api(app)
 
