@@ -1,6 +1,6 @@
 # Grocery
 Makes recipe sharing easy.
 
-##Usage
+## Usage
 
-##Links
+## Links
