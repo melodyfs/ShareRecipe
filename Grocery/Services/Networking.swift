@@ -29,13 +29,13 @@ enum Route {
         
         switch self {
         case .createUser, .getUser:
-            return "http://127.0.0.1:5000/users" // replace 127.0.0.1 with IP address
+            return "https://sharecipe-app.herokuapp.com/users" // replace 127.0.0.1 with IP address
         case .saveRecipe, .deleteRecipe, .retrieveRecipe, .saveNote:
-            return "http://127.0.0.1:5000/recipes"
+            return "https://sharecipe-app.herokuapp.com/recipes"
         case let .getRecipe(query):
             return "https://api.edamam.com/search?app_id=b50e6417&app_key=c845cafa9a669a2a5db0148d11af4e93&q=\(query)"
         case .shareNote, .getGlobalRecipe:
-            return "http://127.0.0.1:5000/global_recipes"
+            return "https://sharecipe-app.herokuapp.com/global_recipes"
         case .analyzeImage:
             return "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify"
         }

@@ -8,9 +8,10 @@ import pdb
 
 
 app = Flask(__name__)
-# mongo = MongoClient('localhost', 27017)
-mongo = MongoClient('mongodb://test2:test2@ds261247.mlab.com:61247/heroku_jnnmnxkw')
-app.db = mongo.heroku_jnnmnxkw
+mongo = MongoClient('localhost', 27017)
+# mongo = MongoClient('mongodb://test2:test2@ds261247.mlab.com:61247/heroku_jnnmnxkw')
+# app.db = mongo.heroku_jnnmnxkw
+app.db = mongo.grocery_development
 api = Api(app)
 
 def auth_validation(email, password):
@@ -120,6 +121,12 @@ class Recipe(Resource):
 
         email = request.args.get('email')
 
+        # new_ = new_recipe['recipes'][0]
+        name = new_recipe.get('recipeName')
+        ingredientLines = new_recipe.get('ingredientLines')
+        url = new_recipe.get('url')
+        imageURL = new_recipe.get('imageURL')
+
 
         target_recipeName = request.args.get('recipeName')
         ingredientOptions = new_recipe.get('ingredientOptions')
@@ -155,11 +162,11 @@ class Recipe(Resource):
             # check_recipe = recipe_col.find({'email': email,'recipes.recipeName': {'$exists':True}})
             # if check_recipe:
 
-            new_ = new_recipe['recipes'][0]
-            name = new_.get('recipeName')
-            ingredientLines = new_.get('ingredientLines')
-            url = new_.get('url')
-            imageURL = new_.get('imageURL')
+            # new_ = new_recipe['recipes'][0]
+            # name = new_.get('recipeName')
+            # ingredientLines = new_.get('ingredientLines')
+            # url = new_.get('url')
+            # imageURL = new_.get('imageURL')
 
             obj = {'recipes': {
                     'recipeName': name,
