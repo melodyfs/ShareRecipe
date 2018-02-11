@@ -8,10 +8,10 @@ import pdb
 
 
 app = Flask(__name__)
-mongo = MongoClient('localhost', 27017)
-# mongo = MongoClient('mongodb://test2:test2@ds261247.mlab.com:61247/heroku_jnnmnxkw')
-# app.db = mongo.heroku_jnnmnxkw
-app.db = mongo.grocery_development
+# mongo = MongoClient('localhost', 27017)
+mongo = MongoClient('mongodb://test2:test2@ds261247.mlab.com:61247/heroku_jnnmnxkw')
+app.db = mongo.heroku_jnnmnxkw
+# app.db = mongo.grocery_development
 api = Api(app)
 
 def auth_validation(email, password):
