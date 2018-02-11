@@ -22,7 +22,6 @@ class RecipeVC: UIViewController {
     @IBAction func searchPressed(_ sender: Any) {
         
         let input = searchField.text
-        let ingredientTableVC = IngredientTableVC()
         
         GetRecipe.shared.fetch(queryParam: input!) { data in
             let recipeList = try? JSONDecoder().decode(RecipeList.self, from: data)
@@ -46,16 +45,19 @@ class RecipeVC: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        setupUI()
         
+    }
+    
+    func setupUI() {
         self.view.addSubview(emptyView)
         emptyView.anchorToSuperview()
         
         let layout = self.collectionView.collectionViewLayout as! UPCarouselFlowLayout
         layout.spacingMode = UPCarouselFlowLayoutSpacingMode.overlap(visibleOffset: 40)
         
-        searchField.backgroundColor = UIColor(red:0.49, green:0.76, blue:0.05, alpha:0.2)
-        
-    
+        searchField.backgroundColor = UIColor(red:0.35, green:0.37, blue:0.35, alpha:0.5)
+        searchField.attributedPlaceholder = NSAttributedString(string:"Search by ingredient...", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.5)])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +80,9 @@ extension RecipeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.recipeNameLabel.text = recipe.label
         cell.recipeNameLabel.layer.cornerRadius = 5
         cell.recipeNameLabel.layer.masksToBounds = true
+        
+        cell.recipeImageView.layer.cornerRadius = 5
+        cell.recipeImageView.clipsToBounds = true
        
         DispatchQueue.main.async {
             cell.recipeImageView?.getImageFromURL(url: recipe.image!)

@@ -22,6 +22,11 @@ class LikedRecipeVC: UIViewController {
         tableView.dataSource = self
         fetchRecipes()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchRecipes()
+    }
 }
 
 extension LikedRecipeVC: UITableViewDelegate, UITableViewDataSource {
@@ -36,6 +41,9 @@ extension LikedRecipeVC: UITableViewDelegate, UITableViewDataSource {
         let recipe = recipes[indexPath.row]
 
         cell.recipeName.text = recipe.recipeName
+        
+        cell.recipeImageView.layer.cornerRadius = 5
+        cell.recipeImageView.clipsToBounds = true
         
         DispatchQueue.main.async {
             cell.recipeImageView.getImageFromURL(url: recipe.imageURL!)
@@ -72,11 +80,12 @@ extension LikedRecipeVC: UITableViewDelegate, UITableViewDataSource {
 extension LikedRecipeVC {
     
     func fetchRecipes() {
-//        let param = ["email": "\(keychain.get("email")!)"]
-        Networking.shared.fetch(route: .retrieveRecipe , data: nil, params: nil) { recipe in
+        let param = ["email": "\(keychain.get("email")!)"]
+        Networking.shared.fetch(route: .retrieveRecipe , data: nil, params: param) { recipe in
             guard let likedRecipe = try? JSONDecoder().decode(UserRecipe.self, from: recipe) else {return}
             self.recipes = likedRecipe.recipes
             print(self.recipes)
+            
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()

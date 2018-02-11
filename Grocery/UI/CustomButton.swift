@@ -38,7 +38,7 @@ class PinkButton: UIButton {
         layer.borderColor = UIColor(red:0.31, green:0.00, blue:0.48, alpha: 0.0).cgColor
         clipsToBounds = true
         contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        setBackgroundColor(color: UIColor(red:0.93, green:0.38, blue:0.38, alpha:1.0), forState: .normal)
+        setBackgroundColor(color: UIColor(red:0.96, green:0.45, blue:0.19, alpha:1.0), forState: .normal)
         setBackgroundColor(color: UIColor.white, forState: .selected)
         setTitleColor(UIColor.white, for: .normal)
         setTitleColor(UIColor.black, for: .selected)

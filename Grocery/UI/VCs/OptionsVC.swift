@@ -69,8 +69,9 @@ class OptionsVC: UIViewController {
     }
     
     @IBAction func ingredientsPressed(_ sender: Any) {
-        collectionStack.insertArrangedSubview(collectionView, at: 0)
+//        collectionStack.insertArrangedSubview(collectionView, at: 0)
         ingredients = ingredients2
+        collectionStack.removeArrangedSubview(collectionView)
         self.tableView.reloadData()
     }
     
@@ -89,6 +90,12 @@ class OptionsVC: UIViewController {
         self.tableView.reloadData()
     }
     
+    @IBAction func optionsPressed(_ sender: Any) {
+        collectionStack.insertArrangedSubview(collectionView, at: 0)
+        
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,18 +106,22 @@ class OptionsVC: UIViewController {
         tableView.dataSource = self
         
         recipeNameLabel.text = recipeName
-        
-        DispatchQueue.main.async {
-            self.recipeImageView.getImageFromURL(url: self.imageURL)
-            self.tableView.reloadData()
-            self.collectionView.reloadData()
-        }
-        
+        collectionView.allowsMultipleSelection = false
+        recipeImageView.getImageFromURL(url: self.imageURL)
+        collectionStack.removeArrangedSubview(collectionView)
+       
         Networking.shared.fetch(route: .getGlobalRecipe, data: nil, params: ["recipeName": recipeName]) { data in
             guard let notes = try? JSONDecoder().decode(GlobalRecipe.self, from: data) else {return}
             self.options = (notes.options) as! [Options]
-            self.optionCount = notes.options.count
             print(self.options)
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.optionCount = notes.options.count
+                self.collectionView.reloadData()
+            }
+            
+            
         }
         
     }
@@ -127,23 +138,31 @@ extension OptionsVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "optionCell", for: indexPath) as! OptionCell
         
-       cell.numberLabel.text = String(indexPath.item + 1)
-        
-        cell.layer.cornerRadius = cell.frame.size.width/2
-        cell.layer.borderWidth = 2.0
-        cell.layer.borderColor = UIColor(red:0.31, green:0.00, blue:0.48, alpha: 0.0).cgColor
-        cell.layer.backgroundColor = UIColor(red:0.95, green:0.90, blue:0.73, alpha:1.0).cgColor
-        cell.layer.masksToBounds = true
+        cell.numberLabel.text = "Other Option" + String(indexPath.item + 1)
+        roundedCell(cell: cell)
         
         return cell
+    }
+    
+    func roundedCell(cell: OptionCell) {
+        cell.layer.cornerRadius = cell.frame.size.width/2
+        cell.layer.backgroundColor = UIColor(red:0.72, green:0.72, blue:0.72, alpha:1.0).cgColor
+        cell.layer.masksToBounds = true
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let option = options[indexPath.row]
         ingredients = [option.ingredientOptions!, option.note!]
         let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.backgroundColor = UIColor(red:0.94, green:0.62, blue:0.66, alpha:1.0).cgColor
+        cell?.layer.backgroundColor = UIColor(red:0.72, green:0.72, blue:0.72, alpha:0.5).cgColor
+
         tableView.reloadData()
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.backgroundColor = UIColor(red:0.72, green:0.72, blue:0.72, alpha:1.0).cgColor
         
     }
 }
