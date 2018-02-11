@@ -43,7 +43,7 @@ enum Route {
     
     func headers() -> [String: String] {
         switch self {
-        case .getUser:
+        case .getUser, .retrieveRecipe:
             let headers = ["Content-Type": "application/json",
                            "Accept": "application/json",
                            "Authorization": String(describing: keychain.get("BasicAuth")!)]
@@ -137,10 +137,10 @@ class Networking {
         var url = URL(string: base)!
 //        var q = params?.values
         
-        if (params?.isEmpty)! {
+//        if (params?.isEmpty)! {
             url = url.appendingQueryParameters(route.urlParams())
-        }
-        url = url.appendingQueryParameters(params!)
+//        }
+//        url = url.appendingQueryParameters(params!)
         
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = route.headers()

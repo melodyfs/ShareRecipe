@@ -72,8 +72,8 @@ extension LikedRecipeVC: UITableViewDelegate, UITableViewDataSource {
 extension LikedRecipeVC {
     
     func fetchRecipes() {
-        let param = ["email": "\(keychain.get("email")!)"]
-        Networking.shared.fetch(route: .retrieveRecipe , data: nil, params: param) { recipe in
+//        let param = ["email": "\(keychain.get("email")!)"]
+        Networking.shared.fetch(route: .retrieveRecipe , data: nil, params: nil) { recipe in
             guard let likedRecipe = try? JSONDecoder().decode(UserRecipe.self, from: recipe) else {return}
             self.recipes = likedRecipe.recipes
             print(self.recipes)
