@@ -162,11 +162,11 @@ class Recipe(Resource):
             # check_recipe = recipe_col.find({'email': email,'recipes.recipeName': {'$exists':True}})
             # if check_recipe:
 
-            # new_ = new_recipe['recipes'][0]
-            # name = new_.get('recipeName')
-            # ingredientLines = new_.get('ingredientLines')
-            # url = new_.get('url')
-            # imageURL = new_.get('imageURL')
+            new_ = new_recipe['recipes'][0]
+            name = new_.get('recipeName')
+            ingredientLines = new_.get('ingredientLines')
+            url = new_.get('url')
+            imageURL = new_.get('imageURL')
 
             obj = {'recipes': {
                     'recipeName': name,
