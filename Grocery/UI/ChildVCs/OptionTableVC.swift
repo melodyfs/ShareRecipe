@@ -65,6 +65,8 @@ extension OptionTableVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.textLabel?.text = ingredient
+        cell.textLabel?.font = UIFont(name:"Avenir", size: 18)
+        cell.textLabel?.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
         
         
         

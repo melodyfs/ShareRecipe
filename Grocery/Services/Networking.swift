@@ -124,13 +124,14 @@ enum Route {
     }
 }
 
-
+var status = 0
 
 class Networking {
     
     static var shared = Networking()
     
     let session = URLSession.shared
+    var statusCode = 0
     
     func fetch(route: Route, data: Encodable?, params: [String:String]?, completion: @escaping (Data) -> Void) {
         let base = route.path()
@@ -150,10 +151,10 @@ class Networking {
         session.dataTask(with: request) { (data, res, err) in
             let httpResponse = res as? HTTPURLResponse
             if let data = data {
+                self.statusCode = (httpResponse?.statusCode)!
+                print(self.statusCode)
                 completion(data)
                 print("Networking succeeded")
-                let statusCode = httpResponse?.statusCode
-                print(statusCode)
             }
             else {
                 print(err?.localizedDescription ?? "Error")
@@ -162,7 +163,6 @@ class Networking {
             }.resume()
         
     }
-
     
 }
 

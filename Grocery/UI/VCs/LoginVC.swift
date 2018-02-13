@@ -26,15 +26,17 @@ class LoginVC: UIViewController {
         keychain.set(basicAuth, forKey: "BasicAuth")
         let user = User(email: username, password: password)
         
-        Networking.shared.fetch(route: .createUser, data: user, params: [:]) { _ in}
-        UserDefaults.standard.set(true, forKey: "loggedIn")
-        
-        DispatchQueue.main.async {
-            let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabBarVC") as! UITabBarController
-            self.view.window?.rootViewController = initialViewController
-            self.view.window?.makeKeyAndVisible()
+        Networking.shared.fetch(route: .createUser, data: user, params: [:]) { _ in
+            if Networking.shared.statusCode == 409 {
+                print("User exists")
+                DispatchQueue.main.async {
+                    self.informSignUpFailure()
+                }
+            } else {
+                self.switchTabBarVC()
+            }
+            
         }
-        
     }
     
     @IBAction func loginPressed(_ sender: Any) {
@@ -47,28 +49,24 @@ class LoginVC: UIViewController {
         basicAuth = BasicAuth.generateBasicAuthHeader(username: username , password: password)
         keychain.set(basicAuth, forKey: "BasicAuth")
         
-        Networking.shared.fetch(route: .getUser, data: nil, params: param) { _ in}
-        UserDefaults.standard.set(true, forKey: "loggedIn")
-        
-        DispatchQueue.main.async {
-            let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabBarVC") as! UITabBarController
-            self.view.window?.rootViewController = initialViewController
-            self.view.window?.makeKeyAndVisible()
+        Networking.shared.fetch(route: .getUser, data: nil, params: param) { _ in
+            if Networking.shared.statusCode == 500 {
+                print("login failed")
+                DispatchQueue.main.async {
+                    self.informLoginFailure()
+                }
+                
+            } else {
+                self.switchTabBarVC()
+            }
         }
-        
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 }
 
 extension LoginVC {
@@ -76,6 +74,37 @@ extension LoginVC {
     func setKeychainCredential() {
         keychain.set(emailField.text!, forKey: "email")
         keychain.set(passwordField.text!, forKey: "password")
+    }
+    
+    func switchTabBarVC() {
+        UserDefaults.standard.set(true, forKey: "loggedIn")
+        
+        DispatchQueue.main.async {
+            let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabBarVC") as! UITabBarController
+            self.view.window?.rootViewController = initialViewController
+            self.view.window?.makeKeyAndVisible()
+        }
+    }
+    
+    func informLoginFailure() {
+        let alertController = UIAlertController(title: "Login Failed", message: "Wrong email or password", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .default, handler: { action in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alertController.addAction(ok)
+        self.present(alertController, animated: true) { () in
+            
+        }
+    }
+    
+    func informSignUpFailure() {
+        let alertController = UIAlertController(title: "Email already exists", message: "Use other email", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .default, handler: { action in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alertController.addAction(ok)
+        self.present(alertController, animated: true) { () in
+        }
     }
     
 }

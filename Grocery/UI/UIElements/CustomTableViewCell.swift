@@ -12,6 +12,8 @@ import UIKit
 class FaintWhiteColor: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        textLabel?.textColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha: 0.77)
+        textLabel?.font = UIFont(name:"Avenir", size: 18)
+        textLabel?.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
+        
     }
 }

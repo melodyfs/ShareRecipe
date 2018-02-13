@@ -69,7 +69,6 @@ class OptionsVC: UIViewController {
     }
     
     @IBAction func ingredientsPressed(_ sender: Any) {
-//        collectionStack.insertArrangedSubview(collectionView, at: 0)
         ingredients = ingredients2
         collectionStack.removeArrangedSubview(collectionView)
         self.tableView.reloadData()
@@ -104,6 +103,7 @@ class OptionsVC: UIViewController {
         collectionView.dataSource = self
         tableView.delegate = self
         tableView.dataSource = self
+        self.tableView.estimatedRowHeight = 50.0
         
         recipeNameLabel.text = recipeName
         collectionView.allowsMultipleSelection = false
@@ -178,6 +178,8 @@ extension OptionsVC: UITableViewDelegate, UITableViewDataSource {
         let ingredient = ingredients[indexPath.row]
         
         cell.textLabel?.text = ingredient
+        cell.textLabel?.lineBreakMode = .byWordWrapping
+        cell.textLabel?.numberOfLines = 3
     
         return cell
     }

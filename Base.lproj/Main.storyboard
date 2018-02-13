@@ -368,8 +368,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMr-5A-IAf">
-                                                    <rect key="frame" x="97" y="28" width="256" height="44"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMr-5A-IAf">
+                                                    <rect key="frame" x="97" y="6" width="256" height="86"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="19"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="0.77230164007092195" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -384,11 +384,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Q9F-bq-tVp" firstAttribute="top" secondItem="OlR-33-Acf" secondAttribute="topMargin" constant="-5" id="4TJ-g2-5tc"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="HMr-5A-IAf" secondAttribute="bottom" constant="17" id="8NN-fC-SvF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="HMr-5A-IAf" secondAttribute="bottom" constant="-3" id="8NN-fC-SvF"/>
                                                 <constraint firstItem="HMr-5A-IAf" firstAttribute="leading" secondItem="Q9F-bq-tVp" secondAttribute="trailing" constant="10" id="BOZ-Of-Yfq"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Q9F-bq-tVp" secondAttribute="bottom" constant="-3" id="CXz-IZ-deY"/>
                                                 <constraint firstItem="Q9F-bq-tVp" firstAttribute="leading" secondItem="OlR-33-Acf" secondAttribute="leadingMargin" constant="-9" id="cg9-qp-RX3"/>
-                                                <constraint firstItem="HMr-5A-IAf" firstAttribute="top" secondItem="OlR-33-Acf" secondAttribute="topMargin" constant="17" id="hMp-fD-63A"/>
+                                                <constraint firstItem="HMr-5A-IAf" firstAttribute="top" secondItem="OlR-33-Acf" secondAttribute="topMargin" constant="-5" id="hMp-fD-63A"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="HMr-5A-IAf" secondAttribute="trailing" constant="7" id="xnS-ik-q8v"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -435,61 +435,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sBW-n0-QkH">
-                                <rect key="frame" x="23" y="267" width="360" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Duj-Om-Iu8" customClass="GreenButton" customModule="Grocery" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="vqi-dl-ZQr"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                        <state key="normal" title="Ingredients"/>
-                                        <connections>
-                                            <action selector="ingredientsPressed:" destination="tGn-UN-KOL" eventType="touchUpInside" id="bQi-Pf-0xJ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pt4-J9-Sns" customClass="GreenButton" customModule="Grocery" customModuleProvider="target">
-                                        <rect key="frame" x="110" y="0.0" width="70" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="70" id="O1P-B2-lnI"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                        <state key="normal" title="Steps"/>
-                                        <connections>
-                                            <action selector="stepsPressed:" destination="tGn-UN-KOL" eventType="touchUpInside" id="E7q-kf-RAl"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjv-If-nIc" customClass="GreenButton" customModule="Grocery" customModuleProvider="target">
-                                        <rect key="frame" x="190" y="0.0" width="70" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="70" id="GAd-Qd-RHh"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                        <state key="normal" title="Notes"/>
-                                        <connections>
-                                            <action selector="notesPressed:" destination="tGn-UN-KOL" eventType="touchUpInside" id="Ocr-E5-RSK"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kc-8h-2uk" customClass="GreenButton" customModule="Grocery" customModuleProvider="target">
-                                        <rect key="frame" x="270" y="0.0" width="90" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="90" id="Q1K-Rf-ItL"/>
-                                            <constraint firstAttribute="height" constant="30" id="sW9-3I-OmQ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                        <state key="normal" title="Options"/>
-                                        <connections>
-                                            <action selector="optionsPressed:" destination="tGn-UN-KOL" eventType="touchUpInside" id="ioJ-wf-g3n"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="360" id="K0l-lQ-OIB"/>
-                                    <constraint firstAttribute="height" constant="30" id="L6b-H2-Wjn"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="NCo-Q0-TTq"/>
-                                </constraints>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nP9-2I-yrE">
                                 <rect key="frame" x="17" y="212" width="342" height="47"/>
                                 <constraints>
@@ -505,6 +450,16 @@
                                     <constraint firstAttribute="height" constant="180" id="ys2-A6-dEv"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61X-g2-gMS" customClass="PinkButton" customModule="Grocery" customModuleProvider="target">
+                                <rect key="frame" x="267" y="31" width="104" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="EL7-dD-hTd"/>
+                                </constraints>
+                                <state key="normal" title="Add Notes"/>
+                                <connections>
+                                    <action selector="addNotes:" destination="tGn-UN-KOL" eventType="touchUpInside" id="rxW-n1-NFQ"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Aye-cC-LHc">
                                 <rect key="frame" x="10" y="317" width="365" height="350"/>
                                 <subviews>
@@ -558,7 +513,7 @@
                                         <rect key="frame" x="0.0" y="70" width="365" height="280"/>
                                         <color key="backgroundColor" red="0.15655866269999999" green="0.1643616259" blue="0.18512627479999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="D4g-OG-oTV" customClass="FaintWhiteColor" customModule="Grocery" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="D4g-OG-oTV" customClass="FaintWhiteColor" customModule="Grocery" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="365" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D4g-OG-oTV" id="hlq-wK-26V">
@@ -580,19 +535,66 @@
                                     <constraint firstAttribute="height" constant="350" id="Xjq-nE-5mB"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61X-g2-gMS" customClass="PinkButton" customModule="Grocery" customModuleProvider="target">
-                                <rect key="frame" x="296" y="31" width="75" height="54"/>
-                                <state key="normal" title="Add Notes"/>
-                                <connections>
-                                    <action selector="addNotes:" destination="tGn-UN-KOL" eventType="touchUpInside" id="rxW-n1-NFQ"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="sBW-n0-QkH">
+                                <rect key="frame" x="15" y="267" width="360" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Duj-Om-Iu8" customClass="GreenButton" customModule="Grocery" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="vqi-dl-ZQr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <state key="normal" title="Ingredients"/>
+                                        <connections>
+                                            <action selector="ingredientsPressed:" destination="tGn-UN-KOL" eventType="touchUpInside" id="bQi-Pf-0xJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pt4-J9-Sns" customClass="GreenButton" customModule="Grocery" customModuleProvider="target">
+                                        <rect key="frame" x="122.5" y="0.0" width="65" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="O1P-B2-lnI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Steps"/>
+                                        <connections>
+                                            <action selector="stepsPressed:" destination="tGn-UN-KOL" eventType="touchUpInside" id="E7q-kf-RAl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjv-If-nIc" customClass="GreenButton" customModule="Grocery" customModuleProvider="target">
+                                        <rect key="frame" x="192.5" y="0.0" width="70" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="GAd-Qd-RHh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Notes"/>
+                                        <connections>
+                                            <action selector="notesPressed:" destination="tGn-UN-KOL" eventType="touchUpInside" id="Ocr-E5-RSK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kc-8h-2uk" customClass="GreenButton" customModule="Grocery" customModuleProvider="target">
+                                        <rect key="frame" x="267.5" y="0.0" width="92.5" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="sW9-3I-OmQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <state key="normal" title="Options"/>
+                                        <connections>
+                                            <action selector="optionsPressed:" destination="tGn-UN-KOL" eventType="touchUpInside" id="ioJ-wf-g3n"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="360" id="K0l-lQ-OIB"/>
+                                    <constraint firstAttribute="height" constant="30" id="L6b-H2-Wjn"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="NCo-Q0-TTq"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.15655866269999999" green="0.1643616259" blue="0.18512627479999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qYL-wg-xFs" firstAttribute="trailing" secondItem="4fh-w8-VXa" secondAttribute="trailing" id="1A5-yd-cob"/>
                             <constraint firstItem="nP9-2I-yrE" firstAttribute="top" secondItem="qYL-wg-xFs" secondAttribute="bottom" constant="1" id="3Y5-4S-s2y"/>
-                            <constraint firstItem="sBW-n0-QkH" firstAttribute="top" secondItem="61X-g2-gMS" secondAttribute="bottom" constant="182" id="47r-qX-S3j"/>
+                            <constraint firstItem="sBW-n0-QkH" firstAttribute="top" secondItem="61X-g2-gMS" secondAttribute="bottom" constant="185" id="47r-qX-S3j"/>
                             <constraint firstItem="61X-g2-gMS" firstAttribute="top" secondItem="4fh-w8-VXa" secondAttribute="top" constant="11" id="HE0-Nt-Cnl"/>
                             <constraint firstItem="nP9-2I-yrE" firstAttribute="leading" secondItem="4fh-w8-VXa" secondAttribute="leading" constant="17" id="K2w-2h-DQZ"/>
                             <constraint firstItem="Aye-cC-LHc" firstAttribute="top" secondItem="sBW-n0-QkH" secondAttribute="bottom" constant="20" id="KOf-I8-A1z"/>
@@ -601,11 +603,11 @@
                             <constraint firstItem="4fh-w8-VXa" firstAttribute="trailing" secondItem="61X-g2-gMS" secondAttribute="trailing" constant="4" id="bcb-v8-DLL"/>
                             <constraint firstItem="Aye-cC-LHc" firstAttribute="bottom" secondItem="4fh-w8-VXa" secondAttribute="bottom" id="bri-RL-KwK"/>
                             <constraint firstItem="qYL-wg-xFs" firstAttribute="leading" secondItem="4fh-w8-VXa" secondAttribute="leading" id="cXL-Fc-ETr"/>
-                            <constraint firstItem="sBW-n0-QkH" firstAttribute="leading" secondItem="4fh-w8-VXa" secondAttribute="leading" constant="23" id="cd2-rt-AYL"/>
+                            <constraint firstItem="sBW-n0-QkH" firstAttribute="leading" secondItem="4fh-w8-VXa" secondAttribute="leading" constant="15" id="cd2-rt-AYL"/>
                             <constraint firstItem="sBW-n0-QkH" firstAttribute="top" secondItem="nP9-2I-yrE" secondAttribute="bottom" constant="8" id="eQN-Hy-dT2"/>
                             <constraint firstItem="4fh-w8-VXa" firstAttribute="trailing" secondItem="nP9-2I-yrE" secondAttribute="trailing" constant="16" id="ewP-Ti-kVR"/>
                             <constraint firstItem="Aye-cC-LHc" firstAttribute="leading" secondItem="4fh-w8-VXa" secondAttribute="leading" constant="10" id="krZ-j1-3xg"/>
-                            <constraint firstItem="61X-g2-gMS" firstAttribute="leading" secondItem="4fh-w8-VXa" secondAttribute="leading" constant="296" id="y1e-wu-oEI"/>
+                            <constraint firstItem="61X-g2-gMS" firstAttribute="leading" secondItem="4fh-w8-VXa" secondAttribute="leading" constant="267" id="y1e-wu-oEI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4fh-w8-VXa"/>
                     </view>
@@ -678,7 +680,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="i1T-bY-Ut2">
-                                <rect key="frame" x="72.5" y="220" width="230" height="75"/>
+                                <rect key="frame" x="73" y="220" width="230" height="75"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="759" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="9Jn-yO-GJ3">
                                         <rect key="frame" x="0.0" y="0.0" width="230" height="30"/>
@@ -721,8 +723,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="amP-LT-E9S">
                                                 <rect key="frame" x="90" y="0.0" width="140" height="30"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -731,29 +732,37 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9az-Wh-7xz">
-                                <rect key="frame" x="117" y="303" width="152" height="57"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Sign Up "/>
-                                <connections>
-                                    <action selector="signUpPressed:" destination="rM7-7a-dVv" eventType="touchUpInside" id="kze-jr-ZjK"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhJ-gq-Wfj">
-                                <rect key="frame" x="117" y="349" width="152" height="57"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhJ-gq-Wfj" customClass="GreenButton" customModule="Grocery" customModuleProvider="target">
+                                <rect key="frame" x="111" y="348" width="152" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="vUS-14-Aju"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Log In"/>
                                 <connections>
                                     <action selector="loginPressed:" destination="rM7-7a-dVv" eventType="touchUpInside" id="Bfx-ef-rxZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9az-Wh-7xz" customClass="PinkButton" customModule="Grocery" customModuleProvider="target">
+                                <rect key="frame" x="111" y="413" width="152" height="57"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Sign Up "/>
+                                <connections>
+                                    <action selector="signUpPressed:" destination="rM7-7a-dVv" eventType="touchUpInside" id="kze-jr-ZjK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="fhJ-gq-Wfj" firstAttribute="leading" secondItem="9az-Wh-7xz" secondAttribute="leading" id="6SQ-22-ekM"/>
                             <constraint firstItem="i1T-bY-Ut2" firstAttribute="centerY" secondItem="Zbt-Sv-FLR" secondAttribute="centerY" constant="-76" id="7OS-lV-weK"/>
+                            <constraint firstItem="fhJ-gq-Wfj" firstAttribute="trailing" secondItem="9az-Wh-7xz" secondAttribute="trailing" id="DfI-Ge-FLh"/>
                             <constraint firstItem="i1T-bY-Ut2" firstAttribute="centerX" secondItem="Zbt-Sv-FLR" secondAttribute="centerX" id="E3e-qM-q5Z"/>
+                            <constraint firstItem="9az-Wh-7xz" firstAttribute="top" secondItem="fhJ-gq-Wfj" secondAttribute="bottom" constant="8" symbolic="YES" id="Hx9-Ky-kPk"/>
+                            <constraint firstItem="NW9-Yo-0Ok" firstAttribute="bottom" secondItem="9az-Wh-7xz" secondAttribute="bottom" constant="197" id="Rh0-1t-cO1"/>
+                            <constraint firstItem="fhJ-gq-Wfj" firstAttribute="centerX" secondItem="Zbt-Sv-FLR" secondAttribute="centerX" id="Xkg-vb-wfW"/>
+                            <constraint firstItem="fhJ-gq-Wfj" firstAttribute="leading" secondItem="NW9-Yo-0Ok" secondAttribute="leading" constant="111" id="aOY-M2-b2G"/>
+                            <constraint firstItem="fhJ-gq-Wfj" firstAttribute="top" secondItem="i1T-bY-Ut2" secondAttribute="bottom" constant="53" id="avR-LO-o96"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NW9-Yo-0Ok"/>
                     </view>
