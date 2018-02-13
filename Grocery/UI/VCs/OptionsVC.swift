@@ -90,8 +90,21 @@ class OptionsVC: UIViewController {
     }
     
     @IBAction func optionsPressed(_ sender: Any) {
-        collectionStack.insertArrangedSubview(collectionView, at: 0)
-        
+        if optionCount == 0 {
+            informNoMethod()
+        } else {
+            collectionStack.insertArrangedSubview(collectionView, at: 0)
+        }
+    }
+    
+    func informNoMethod() {
+        let alertController = UIAlertController(title: "No other methods from other cooks yet", message: "Share yours and check back often! ", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .default, handler: { action in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alertController.addAction(ok)
+        self.present(alertController, animated: true) { () in
+        }
     }
     
     
@@ -121,7 +134,6 @@ class OptionsVC: UIViewController {
                 self.collectionView.reloadData()
             }
             
-            
         }
         
     }
@@ -138,7 +150,7 @@ extension OptionsVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "optionCell", for: indexPath) as! OptionCell
         
-        cell.numberLabel.text = "Other Option" + String(indexPath.item + 1)
+        cell.numberLabel.text = "Other Method" + String(indexPath.item + 1)
         roundedCell(cell: cell)
         
         return cell
