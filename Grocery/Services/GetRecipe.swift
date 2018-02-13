@@ -18,7 +18,7 @@ class GetRecipe {
         let base = "https://api.edamam.com/search?app_id=b50e6417&app_key=c845cafa9a669a2a5db0148d11af4e93&q=\(queryParam)"
         let headers = ["Content-Type": "application/json",
                        "Accept": "application/json"]
-        var url = URL(string: base)!
+        let url = URL(string: base)!
         
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = headers
@@ -29,7 +29,7 @@ class GetRecipe {
                 completion(data)
                 print("Get recipe networking succeeded")
                 let statusCode = httpResponse?.statusCode
-                print(statusCode)
+                print(statusCode ?? "")
             }
             else {
                 print(err?.localizedDescription ?? "Error")

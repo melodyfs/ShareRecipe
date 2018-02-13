@@ -81,8 +81,7 @@ class OptionsVC: UIViewController {
         self.navigationController?.pushViewController(webVC, animated: true)
     }
     
-    @IBAction func notesPressed(_ sender: Any) {
-        let param = ["email": "\(keychain.get("email")!)", "recipeName": recipeName!]
+    @IBAction func notesPressed(_ sender: Any)  {
         collectionStack.removeArrangedSubview(collectionView)
         
         ingredients = notesArr

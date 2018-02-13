@@ -10,7 +10,7 @@ import UIKit
 import UPCarouselFlowLayout
 
 
-class RecipeVC: UIViewController {
+class RecipeVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet var availableView: UIView!
@@ -20,15 +20,16 @@ class RecipeVC: UIViewController {
     var recipes = [Recipe]()
 
     @IBAction func searchPressed(_ sender: Any) {
-        
+        searchAction()
+    }
+    
+    func searchAction() {
         let input = searchField.text
         
         GetRecipe.shared.fetch(queryParam: input!) { data in
             let recipeList = try? JSONDecoder().decode(RecipeList.self, from: data)
             guard let recipe = recipeList?.hits else { return }
             self.recipes = recipe
-//            print(self.recipes)
-
             
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -37,15 +38,15 @@ class RecipeVC: UIViewController {
                 self.availableView.anchorToSuperview()
             }
         }
-        
-        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.delegate = self
         collectionView.dataSource = self
         setupUI()
+        self.searchField.delegate = self
         
     }
     
@@ -57,13 +58,25 @@ class RecipeVC: UIViewController {
         layout.spacingMode = UPCarouselFlowLayoutSpacingMode.overlap(visibleOffset: 40)
         
         searchField.backgroundColor = UIColor(red:0.35, green:0.37, blue:0.35, alpha:0.5)
-        searchField.attributedPlaceholder = NSAttributedString(string:"Search by ingredient...", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.5)])
+        searchField.attributedPlaceholder = NSAttributedString(string:"Search by ingredient or dish...", attributes: [NSAttributedStringKey.foregroundColor: UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.5)])
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchAction()
+        searchField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        searchField.resignFirstResponder()
+    }
+
     
 }
 
