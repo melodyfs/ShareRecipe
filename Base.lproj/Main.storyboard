@@ -564,7 +564,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjv-If-nIc" customClass="GreenButton" customModule="Grocery" customModuleProvider="target">
                                         <rect key="frame" x="188.5" y="0.0" width="70" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="70" id="GAd-Qd-RHh"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="GAd-Qd-RHh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                         <state key="normal" title="Notes"/>
@@ -731,6 +731,7 @@
                                                     <constraint firstAttribute="width" constant="270" id="XUZ-sg-2CX"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
@@ -772,7 +773,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Y7K-4f-H3O">
-                                <rect key="frame" x="85" y="84" width="206" height="74"/>
+                                <rect key="frame" x="84" y="110" width="206" height="74"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ShareRecipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACi-bU-J26">
                                         <rect key="frame" x="0.0" y="0.0" width="206" height="50"/>
@@ -796,19 +797,18 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="206" id="e4j-gw-BAG"/>
+                                    <constraint firstAttribute="height" constant="74" id="CfB-Dn-7oB"/>
+                                    <constraint firstAttribute="width" constant="206" id="uci-mB-QX7"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.15655866269999999" green="0.1643616259" blue="0.18512627479999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Y7K-4f-H3O" firstAttribute="leading" secondItem="NW9-Yo-0Ok" secondAttribute="leading" constant="84.5" id="6uO-EL-1vk"/>
-                            <constraint firstItem="Y7K-4f-H3O" firstAttribute="centerX" secondItem="Zbt-Sv-FLR" secondAttribute="centerX" id="8Hf-lB-dAZ"/>
                             <constraint firstItem="gbC-pV-o7B" firstAttribute="centerX" secondItem="Zbt-Sv-FLR" secondAttribute="centerX" id="HsI-hd-X4e"/>
-                            <constraint firstItem="Y7K-4f-H3O" firstAttribute="top" secondItem="NW9-Yo-0Ok" secondAttribute="top" constant="64" id="W2Z-3y-l3Y"/>
                             <constraint firstItem="Kci-1v-Tzx" firstAttribute="centerX" secondItem="Zbt-Sv-FLR" secondAttribute="centerX" id="eGe-7B-dkx"/>
                             <constraint firstItem="Kci-1v-Tzx" firstAttribute="centerY" secondItem="Zbt-Sv-FLR" secondAttribute="centerY" constant="-49" id="oE8-yf-qsm"/>
-                            <constraint firstItem="NW9-Yo-0Ok" firstAttribute="trailing" secondItem="Y7K-4f-H3O" secondAttribute="trailing" constant="84.5" id="tx1-dR-k0m"/>
+                            <constraint firstItem="Y7K-4f-H3O" firstAttribute="centerY" secondItem="Zbt-Sv-FLR" secondAttribute="centerY" constant="-186.5" id="tHo-WS-VkZ"/>
+                            <constraint firstItem="Y7K-4f-H3O" firstAttribute="centerX" secondItem="Zbt-Sv-FLR" secondAttribute="centerX" id="wPa-DI-C7k"/>
                             <constraint firstItem="gbC-pV-o7B" firstAttribute="centerY" secondItem="Zbt-Sv-FLR" secondAttribute="centerY" constant="130" id="wtF-TW-ced"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NW9-Yo-0Ok"/>

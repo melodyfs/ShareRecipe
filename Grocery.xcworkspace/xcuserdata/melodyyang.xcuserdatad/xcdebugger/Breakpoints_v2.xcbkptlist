@@ -31,8 +31,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
             endingLineNumber = "100"
-            landmarkName = "body(data:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -49,54 +49,6 @@
             endingLineNumber = "43"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Grocery/Services/Networking.swift"
-            timestampString = "540242918.826162"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "fetch(route:data:params:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Grocery.Networking.fetch(route: Grocery.Route, data: Swift.Optional&lt;Swift.Encodable&gt;, params: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Foundation.Data) -&gt; ()) -&gt; ()"
-                  moduleName = "Grocery"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/melodyyang/Desktop/Grocery/Grocery/Services/Networking.swift"
-                  timestampString = "540028427.7887321"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "150"
-                  endingLineNumber = "150"
-                  offsetFromSymbolStart = "904">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.URLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Grocery.Networking.fetch(route: Grocery.Route, data: Swift.Optional&lt;Swift.Encodable&gt;, params: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Foundation.Data) -&gt; ()) -&gt; ()"
-                  moduleName = "Grocery"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/melodyyang/Desktop/Grocery/Grocery/Services/Networking.swift"
-                  timestampString = "540028427.791134"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -1,0 +1,8 @@
+app_identifier "org.cocoapods.Pods-Grocery" # The bundle identifier of your app
+apple_id "melody870116@gmail.com" # Your Apple email address
+
+itc_team_id "118689770" # iTunes Connect Team ID
+team_id "9JYNRTHSJ3" # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

@@ -25,6 +25,7 @@ class LoginVC: UIViewController {
         basicAuth = BasicAuth.generateBasicAuthHeader(username: username , password: password)
         keychain.set(basicAuth, forKey: "BasicAuth")
         let user = User(email: username, password: password)
+        let sv = UIViewController.displaySpinner(onView: self.view)
         
         Networking.shared.fetch(route: .createUser, data: user, params: [:]) { _ in
             if Networking.shared.statusCode == 409 {
@@ -34,6 +35,7 @@ class LoginVC: UIViewController {
                 }
             } else {
                 self.switchTabBarVC()
+                UIViewController.removeSpinner(spinner: sv)
             }
             
         }
@@ -48,6 +50,7 @@ class LoginVC: UIViewController {
         
         basicAuth = BasicAuth.generateBasicAuthHeader(username: username , password: password)
         keychain.set(basicAuth, forKey: "BasicAuth")
+        let sv = UIViewController.displaySpinner(onView: self.view)
         
         Networking.shared.fetch(route: .getUser, data: nil, params: param) { _ in
             if Networking.shared.statusCode == 500 {
@@ -57,6 +60,7 @@ class LoginVC: UIViewController {
                 }
                 
             } else {
+                UIViewController.removeSpinner(spinner: sv)
                 self.switchTabBarVC()
             }
         }
@@ -111,4 +115,27 @@ extension LoginVC {
         }
     }
     
+}
+
+extension UIViewController {
+    class func displaySpinner(onView : UIView) -> UIView {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        return spinnerView
+    }
+    
+    class func removeSpinner(spinner :UIView) {
+        DispatchQueue.main.async {
+            spinner.removeFromSuperview()
+        }
+    }
 }
