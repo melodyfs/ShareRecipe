@@ -451,16 +451,6 @@
                                     <constraint firstAttribute="height" constant="180" id="ys2-A6-dEv"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61X-g2-gMS" customClass="PinkButton" customModule="Grocery" customModuleProvider="target">
-                                <rect key="frame" x="267" y="31" width="104" height="51"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="EL7-dD-hTd"/>
-                                </constraints>
-                                <state key="normal" title="Add Notes"/>
-                                <connections>
-                                    <action selector="addNotes:" destination="tGn-UN-KOL" eventType="touchUpInside" id="rxW-n1-NFQ"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Aye-cC-LHc">
                                 <rect key="frame" x="10" y="317" width="365" height="350"/>
                                 <subviews>
@@ -590,25 +580,35 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="NCo-Q0-TTq"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61X-g2-gMS" customClass="PinkButton" customModule="Grocery" customModuleProvider="target">
+                                <rect key="frame" x="271" y="24" width="104" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="EL7-dD-hTd"/>
+                                </constraints>
+                                <state key="normal" title="Add Notes"/>
+                                <connections>
+                                    <action selector="addNotes:" destination="tGn-UN-KOL" eventType="touchUpInside" id="rxW-n1-NFQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.15655866269999999" green="0.1643616259" blue="0.18512627479999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qYL-wg-xFs" firstAttribute="trailing" secondItem="4fh-w8-VXa" secondAttribute="trailing" id="1A5-yd-cob"/>
                             <constraint firstItem="nP9-2I-yrE" firstAttribute="top" secondItem="qYL-wg-xFs" secondAttribute="bottom" constant="1" id="3Y5-4S-s2y"/>
-                            <constraint firstItem="sBW-n0-QkH" firstAttribute="top" secondItem="61X-g2-gMS" secondAttribute="bottom" constant="185" id="47r-qX-S3j"/>
-                            <constraint firstItem="61X-g2-gMS" firstAttribute="top" secondItem="4fh-w8-VXa" secondAttribute="top" constant="11" id="HE0-Nt-Cnl"/>
+                            <constraint firstItem="sBW-n0-QkH" firstAttribute="top" secondItem="61X-g2-gMS" secondAttribute="bottom" constant="188" id="47r-qX-S3j"/>
+                            <constraint firstItem="61X-g2-gMS" firstAttribute="top" secondItem="4fh-w8-VXa" secondAttribute="top" constant="4" id="HE0-Nt-Cnl"/>
                             <constraint firstItem="nP9-2I-yrE" firstAttribute="leading" secondItem="4fh-w8-VXa" secondAttribute="leading" constant="17" id="K2w-2h-DQZ"/>
                             <constraint firstItem="Aye-cC-LHc" firstAttribute="top" secondItem="sBW-n0-QkH" secondAttribute="bottom" constant="20" id="KOf-I8-A1z"/>
                             <constraint firstItem="Aye-cC-LHc" firstAttribute="bottom" secondItem="4fh-w8-VXa" secondAttribute="bottom" id="Pny-Ms-feS"/>
                             <constraint firstItem="Aye-cC-LHc" firstAttribute="trailing" secondItem="4fh-w8-VXa" secondAttribute="trailing" id="XLh-7V-Qus"/>
-                            <constraint firstItem="4fh-w8-VXa" firstAttribute="trailing" secondItem="61X-g2-gMS" secondAttribute="trailing" constant="4" id="bcb-v8-DLL"/>
+                            <constraint firstItem="4fh-w8-VXa" firstAttribute="trailing" secondItem="61X-g2-gMS" secondAttribute="trailing" id="bcb-v8-DLL"/>
                             <constraint firstItem="Aye-cC-LHc" firstAttribute="bottom" secondItem="4fh-w8-VXa" secondAttribute="bottom" id="bri-RL-KwK"/>
                             <constraint firstItem="qYL-wg-xFs" firstAttribute="leading" secondItem="4fh-w8-VXa" secondAttribute="leading" id="cXL-Fc-ETr"/>
                             <constraint firstItem="sBW-n0-QkH" firstAttribute="leading" secondItem="4fh-w8-VXa" secondAttribute="leading" constant="15" id="cd2-rt-AYL"/>
                             <constraint firstItem="sBW-n0-QkH" firstAttribute="top" secondItem="nP9-2I-yrE" secondAttribute="bottom" constant="8" id="eQN-Hy-dT2"/>
                             <constraint firstItem="4fh-w8-VXa" firstAttribute="trailing" secondItem="nP9-2I-yrE" secondAttribute="trailing" constant="16" id="ewP-Ti-kVR"/>
                             <constraint firstItem="Aye-cC-LHc" firstAttribute="leading" secondItem="4fh-w8-VXa" secondAttribute="leading" constant="10" id="krZ-j1-3xg"/>
-                            <constraint firstItem="61X-g2-gMS" firstAttribute="leading" secondItem="4fh-w8-VXa" secondAttribute="leading" constant="267" id="y1e-wu-oEI"/>
+                            <constraint firstItem="61X-g2-gMS" firstAttribute="leading" secondItem="4fh-w8-VXa" secondAttribute="leading" constant="271" id="y1e-wu-oEI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4fh-w8-VXa"/>
                     </view>
