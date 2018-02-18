@@ -1,4 +1,5 @@
-# ShareRecipe
+# ShareRecipe [<img src="https://github.com/melodyfs/ShareRecipe/blob/master/icon.png" width="40" height="40" />](https://itunes.apple.com/us/app/sharerecipe/id1348443539?mt=8)
+
 Find Recipes, Cook the Dishes, and Share Your Learnings!
 
 Sometimes finding a good recipe is not difficult, but looking for the right ingredients can be hard. What if your supermarket runs out of certain items? And perhaps you don't own certain kitchenwares? 
