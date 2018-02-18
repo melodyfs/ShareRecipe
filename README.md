@@ -1,5 +1,9 @@
-# Grocery
-Makes recipe sharing easy.
+# ShareRecipe
+Find Recipes, Cook the Dishes, and Share Your Learnings!
+
+Sometimes finding a good recipe is not difficult, but looking for the right ingredients can be hard. What if your supermarket runs out of certain items? And perhaps you don't own certain kitchenwares? 
+
+By looking up what other people use as substitutes on ShareRecipe, cooking becomes stress-free. If you figure out a way to make dishes better, don't forget to share your cooking experiences with other people as well!
 
 ## Usage
 ### Prerequisites
