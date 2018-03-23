@@ -21,4 +21,4 @@ Navigate to `/Grocery` and run `pod install`
 <img src="https://github.com/melodyfs/ShareRecipe/blob/master/step1.gif" width="270" height="500" /> <img src="https://github.com/melodyfs/ShareRecipe/blob/master/step2.gif" width="270" height="500" /> <img src="https://github.com/melodyfs/ShareRecipe/blob/master/step3.gif" width="270" height="500" />
 
 ## Links
-[ShareRecipe on App Store](https://itunes.apple.com/us/app/sharerecipe/id1348443539?mt=8)
+[ShareRecipe on the App Store](https://itunes.apple.com/us/app/sharerecipe/id1348443539?mt=8)
