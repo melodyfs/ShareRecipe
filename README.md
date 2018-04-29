@@ -17,6 +17,9 @@ By looking up what other people use as substitutes on ShareRecipe, cooking becom
 ### Installation
 Navigate to `/Grocery` and run `pod install`
 
+### Backend Server
+- Refer to `app.py`
+
 ## Demos
 <img src="https://github.com/melodyfs/ShareRecipe/blob/master/step1.gif" width="270" height="500" /> <img src="https://github.com/melodyfs/ShareRecipe/blob/master/step2.gif" width="270" height="500" /> <img src="https://github.com/melodyfs/ShareRecipe/blob/master/step3.gif" width="270" height="500" />
 
